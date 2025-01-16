@@ -24,9 +24,20 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg ">
-            <div class="container pt-2">
+    <!-- //site Loader -->
+    <div class="freshcart-loader m-0 p-0">
+        <div class="cart">
+            <div class="cart-body"></div>
+            <div class="cart-wheel wheel1"></div>
+            <div class="cart-wheel wheel2"></div>
+        </div>
+        <div class="cart-text">Loading Fresh Cart...</div>
+    </div>
+
+    <!-- //loader end -->
+    <div class="container-fluid ">
+        <nav class="navbar navbar-expand-lg bg-white border-0">
+            <div class="container ">
                 <a class="navbar-brand" href="#"><img src="img/freshcart-logo.svg" class="w-100" alt="Logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -36,19 +47,47 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Search Form -->
                     <form class="d-flex w-75" role="search">
-                        <input class="form-input me-2 w-75 ms-lg-2 ps-2 " type="search" placeholder="Search"
+                        <input class="form-input me-2 w-75 ms-lg-2 ps-2 pe-2 " type="search" placeholder="Search"
                             aria-label="Search">
                         <button class="btn btn-outline-success ms-2" type="submit">Search</button>
                     </form>
                     <!-- Navbar Icons -->
-                    <ul class="navbar-nav mb-2 mt-2 ">
+                    <ul class="navbar-nav mb-2 mt-2 gap-1 ">
                         <li class="nav-item position-relative">
-                            <a class="nav-link active" aria-current="page" href="#">
+                            <a class="nav-link" aria-current="page" href="#" data-bs-toggle="modal"
+                                data-bs-target="#heartModal">
                                 <i class="fa-regular fa-heart fs-5"></i>
                                 <!-- Badge -->
-                                <span class="badge bg-success rounded-pill icon-badge" id="heartBadge">0</span>
+                                <span
+                                    class="badge bg-success rounded-pill position-absolute top-1 start-1 translate-middle"
+                                    id="heartBadge">0</span>
                             </a>
                         </li>
+                        <!-- wishlist Modal  -->
+
+                        <!-- Wishlist Modal -->
+
+                        <div class="modal fade p-0" id="heartModal" tabindex="-1" aria-labelledby="heartModalLabel"
+                            aria-hidden="true">
+                            <div class="container p-0">
+                                <div class="modal-dialog mx-auto p-0 " style="max-width:100%">
+                                    <div class="modal-content ">
+                                        <div class="modal-header ">
+                                            <h5 class="modal-title" id="heartModalLabel">Your Wishlist</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body wishlist-modal-body  ">
+                                            <!-- Wishlist items will be dynamically added here -->
+                                            <p class="text-danger text-center">Your wishlist is empty!</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- wishlist Modal End  -->
 
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#userModal">
@@ -57,44 +96,49 @@
                         </li>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel"
+                        <div class="modal fade mx-auto" id="userModal" tabindex="-1" aria-labelledby="userModalLabel"
                             aria-hidden="true">
-                            <div class="modal-dialog w-auto">
+                            <div class="modal-dialog w-100 mx-auto">
                                 <div class="modal-content" id="modalcontent">
                                     <div class="modal-header border-0 pb-4">
                                         <h5 class="modal-title fw-bold " id="userModalLabel">Sign Up</h5>
                                         <button type="button" class="btn-close border-0" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
+
                                     <div class="modal-body">
                                         <form id="userLoginForm">
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">Name</label>
-                                                <input type="text" class="form-control py-2" id="username"
-                                                    placeholder="Enter Your Name" required>
+                                                <input type="text" class="form w-100 rounded  ps-2 pe-2 py-2"
+                                                    id="username" placeholder="Enter Your Name" required>
+                                                <div class="error-message text-danger" id="usernameError"></div>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">Email</label>
-                                                <input type="email" class="form-control py-2" id="Email"
-                                                    placeholder="Enter Your Email" required>
+                                                <input type="email" class="form w-100 rounded  ps-2 pe-2 py-2"
+                                                    id="email" placeholder="Enter Your Email" required>
+                                                <div class="error-message text-danger" id="emailError"></div>
                                             </div>
                                             <div class="">
                                                 <label for="password" class="form-label">Password</label>
-                                                <input type="password" class="form-control py-2" id="password"
-                                                    placeholder="Enter your password" required>
+                                                <input type="password" class="form w-100 rounded  ps-2 pe-2 py-2"
+                                                    id="password" placeholder="Enter your password" required>
+                                                <div class="error-message text-danger" id="passwordError"></div>
                                             </div>
-                                            <small class="form-text ">By Signup, you agree to our<a href="#!"
+                                            <small class="form-text">By Signup, you agree to our<a href="#!"
                                                     class="text-success fw-bold"> Terms of
                                                     Service</a> &amp;<a href="#!" class="text-success fw-bold"> Privacy
                                                     Policy</a></small>
 
-                                            <div class="pt-3"> <button type="submit"
-                                                    class="btn btn-success ">Signup</button>
+                                            <div class="pt-3">
+                                                <button type="submit" class="btn btn-success">Signup</button>
                                             </div>
                                             <div class="border-0 justify-content-center modal-footer pb-5 pt-4">Already
-                                                have an
-                                                account?<a href="/signin" class="text-success fw-bold">Sign in</a></div>
+                                                have an account?<a href="/signin" class="text-success fw-bold">Sign
+                                                    in</a></div>
                                         </form>
+
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +151,7 @@
                                 aria-controls="offcanvasExample">
                                 <i class="fa-solid fa-bag-shopping"></i>
                                 <span id="cart-badge"
-                                    class="badge bg-success rounded-pill position-absolute top-0 start-100 translate-middle">0</span>
+                                    class="badge bg-success rounded-pill position-absolute top-1 start-1 translate-middle">0</span>
                             </a>
                         </li>
                     </ul>
@@ -182,52 +226,7 @@
                         </ul>
                     </li>
                 </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown mega-menu">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            Mega Menu
-                        </a>
-                        <div class="dropdown-menu">
-                            <div class="container   ">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <h6 class="category-title">Category 1</h6>
-                                        <ul>
-                                            <li><a href="#">Product 1.1</a></li>
-                                            <li><a href="#">Product 1.2</a></li>
-                                            <li><a href="#">Product 1.3</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <h6 class="category-title">Category 2</h6>
-                                        <ul>
-                                            <li><a href="#">Product 2.1</a></li>
-                                            <li><a href="#">Product 2.2</a></li>
-                                            <li><a href="#">Product 2.3</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <h6 class="category-title">Category 3</h6>
-                                        <ul>
-                                            <li><a href="#">Product 3.1</a></li>
-                                            <li><a href="#">Product 3.2</a></li>
-                                            <li><a href="#">Product 3.3</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <h6 class="category-title">Featured</h6>
-                                        <ul>
-                                            <li><a href="#">New Arrivals</a></li>
-                                            <li><a href="#">Best Sellers</a></li>
-                                            <li><a href="#">Special Offers</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
 
-                </ul>
                 <ul class="navbar-nav flex-row">
                     <li class="nav-item dropdown">
                         <button class="dropdown-toggle ps-4 pe-4 py-2 rounded border-0 bg-transparent"
@@ -275,9 +274,7 @@
                         <!-- First Slide -->
                         <div class="carousel-item active">
                             <div class="position-relative w-100 ">
-                                <!-- Background Image -->
                                 <img src="img/slide-1.jpg" class="d-block w-100 rounded" alt="...">
-                                <!-- Text and Button -->
                                 <div class="position-absolute top-50 start-0 translate-middle-y text-black p-4 w-100">
                                     <h1 class=" fw-bold "> Fresh Grocery</h1>
                                     <p class="lead">Save big on your favorite products.</p>
@@ -381,999 +378,817 @@
                 </div>
             </div>
         </div>
+    </div>
 
-
-        <div class="container mt-4 mb-4 pt-5 pb-5">
-            <div class="row g-4">
-                <div class="col-12 col-sm-12 col-lg-6">
-                    <div class="bgcard rounded py-4">
-                        <div class="content mt-4 mb-3 px-3">
-                            <h3>Fruits & Vegetables</h3>
-                            <p class="text-muted">Get Upto 30% Off</p>
-                            <button class="btn btn-dark">Shop Now</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-lg-6">
-                    <div class="bgcard2 rounded py-4">
-                        <div class="content mt-4 mb-3 px-3">
-                            <h3>Freshly Baked Buns</h3>
-                            <p class="text-muted">Get Upto 25% Off</p>
-                            <button class="btn btn-dark">Shop Now</button>
-                        </div>
+    <div class="container mt-4 mb-4 pt-5 pb-5">
+        <div class="row g-4">
+            <div class="col-12 col-sm-12 col-lg-6">
+                <div class="bgcard rounded py-4">
+                    <div class="content mt-4 mb-3 px-3">
+                        <h3>Fruits & Vegetables</h3>
+                        <p class="text-muted">Get Upto 30% Off</p>
+                        <button class="btn btn-dark">Shop Now</button>
                     </div>
                 </div>
             </div>
-        </div>
-
-
-
-        <div class="container">
-
-            <div class="row gap-3 pb-4">
-                <div class="col border rounded ">
-                    <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
-                        <div class="text-center position-relative">
-                            <div class="position-absolute top-0 start-0 ">
-                                <div class="d-flex gap-1 flex-column"><span
-                                        class="custom-badge  badge bg-danger">Sale</span><span
-                                        class="custom-badge  badge bg-success">10%</span></div>
-                            </div><img src="img/product-img-1.jpg" alt="Grocery Ecommerce Template"
-                                class="mb-3 img-fluid"></a>
-                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                    class="fa-regular fa-eye"></i>
-                                <i class="fa-regular fa-heart" id="cardHeartIcon" style="cursor: pointer;"></i>
-                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                            </div>
-                        </div>
-                        <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Snack
-                                    &amp; Munchies</small></a></div>
-                        <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Haldiram's Sev
-                                Bhujia</a>
-                        </h2>
-                        <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
-                                <div class="d-flex gap-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                        width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-half text-warning">
-                                        <path
-                                            d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z">
-                                        </path>
-                                    </svg></div>
-                            </small><span class="text-muted small">4.3 (4)</span></div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <div class="pe-2"><span class="text-dark">$21.6 </span><span
-                                    class="text-decoration-line-through text-muted">$24</span></div>
-                            <div><a role="button" tabindex="0" href="#!"
-                                    class="btn btn-primary btn-sm btn btn-success"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg> Add</a></div>
-                        </div>
+            <div class="col-12 col-sm-12 col-lg-6">
+                <div class="bgcard2 rounded py-4">
+                    <div class="content mt-4 mb-3 px-3">
+                        <h3>Freshly Baked Buns</h3>
+                        <p class="text-muted">Get Upto 25% Off</p>
+                        <button class="btn btn-dark">Shop Now</button>
                     </div>
                 </div>
-                <div class="col border rounded ">
-                    <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
-                        <div class="text-center position-relative">
-                            <div class="position-absolute top-0 start-0 ">
-                                <div class="d-flex gap-1 flex-column"><span
-                                        class="custom-badge  badge bg-danger">Sale</span><span
-                                        class="custom-badge  badge bg-success">10%</span></div>
-                            </div><img src="img/product-img-2.jpg" alt="Grocery Ecommerce Template"
-                                class="mb-3 img-fluid"></a>
-                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                    class="fa-regular fa-eye"></i>
-                                <i class="fa-regular fa-heart" id="cardHeartIcon" style="cursor: pointer;"></i>
-
-                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                            </div>
-                        </div>
-                        <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Bakery
-                                    &amp; Biscuits</small></a></div>
-                        <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">NutriChoice
-                                Digestive</a>
-                        </h2>
-                        <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
-                                <div class="d-flex gap-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                        width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-half text-warning">
-                                        <path
-                                            d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z">
-                                        </path>
-                                    </svg></div>
-                            </small><span class="text-muted small">4.3 (4)</span></div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <div class="pe-2"><span class="text-dark">$24 </span><span
-                                    class="text-decoration-line-through text-muted">$24</span></div>
-                            <div><a role="button" tabindex="0" href="#!"
-                                    class="btn btn-primary btn-sm btn btn-success"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg> Add</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col border rounded ">
-                    <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
-                        <div class="text-center position-relative">
-                            <div class="position-absolute top-0 start-0 ">
-                                <div class="d-flex gap-1 flex-column"><span
-                                        class="custom-badge  badge bg-danger">Sale</span><span
-                                        class="custom-badge  badge bg-success">10%</span></div>
-                            </div><img src="img/product-img-3.jpg" alt="Grocery Ecommerce Template"
-                                class="mb-3 img-fluid"></a>
-                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                    class="fa-regular fa-eye"></i>
-                                <i class="fa-regular fa-heart" id="cardHeartIcon" style="cursor: pointer;"></i>
-
-                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                            </div>
-                        </div>
-                        <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Bakery
-                                    &amp; Biscuits</small></a></div>
-                        <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Cadbury 5 Star
-                                Chocolate</a>
-                        </h2>
-                        <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
-                                <div class="d-flex gap-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                        width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-half text-warning">
-                                        <path
-                                            d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z">
-                                        </path>
-                                    </svg></div>
-                            </small><span class="text-muted small">4.3 (4)</span></div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <div class="pe-2"><span class="text-dark">$35 </span><span
-                                    class="text-decoration-line-through text-muted">$35</span></div>
-                            <div><a role="button" tabindex="0" href="#!"
-                                    class="btn btn-primary btn-sm btn btn-success"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg> Add</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col border rounded ">
-                    <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
-                        <div class="text-center position-relative">
-                            <div class="position-absolute top-0 start-0 ">
-                                <div class="d-flex gap-1 flex-column"><span
-                                        class="custom-badge  badge bg-danger">Sale</span><span
-                                        class="custom-badge  badge bg-success">10%</span></div>
-                            </div><img src="img/product-img-4.jpg" alt="Grocery Ecommerce Template"
-                                class="mb-3 img-fluid"></a>
-                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                    class="fa-regular fa-eye"></i>
-                                <i class="fa-regular fa-heart" id="cardHeartIcon" style="cursor: pointer;"></i>
-
-                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                            </div>
-                        </div>
-                        <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Snack
-                                    &amp; Munchies</small></a></div>
-                        <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Onion Flavour
-                                Potato</a>
-                        </h2>
-                        <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
-                                <div class="d-flex gap-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                        width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-half text-warning">
-                                        <path
-                                            d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z">
-                                        </path>
-                                    </svg></div>
-                            </small><span class="text-muted small">4.3 (4)</span></div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <div class="pe-2"><span class="text-dark pe-1">$3</span><span
-                                    class="text-decoration-line-through text-muted">$5</span></div>
-                            <div><a role="button" tabindex="0" href="#!"
-                                    class="btn btn-primary btn-sm btn btn-success"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg> Add</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col border rounded ">
-                    <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
-                        <div class="text-center position-relative">
-                            <div class="position-absolute top-0 start-0 ">
-                                <div class="d-flex gap-1 flex-column"><span
-                                        class="custom-badge  badge bg-danger">Sale</span><span
-                                        class="custom-badge  badge bg-success">10%</span></div>
-                            </div><img src="img/product-img-5.jpg" alt="Grocery Ecommerce Template"
-                                class="mb-3 img-fluid"></a>
-                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                    class="fa-regular fa-eye"></i>
-                                <i class="fa-regular fa-heart" id="cardHeartIcon" style="cursor: pointer;"></i>
-
-                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                            </div>
-                        </div>
-                        <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Instant
-                                    Food</small></a></div>
-                        <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Salted Instant
-                                Popcorn</a>
-                        </h2>
-                        <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
-                                <div class="d-flex gap-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                        width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-half text-warning">
-                                        <path
-                                            d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z">
-                                        </path>
-                                    </svg></div>
-                            </small><span class="text-muted small">4.3 (4)</span></div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <div class="pe-2"><span class="text-dark">$11.7</span><span
-                                    class="text-decoration-line-through text-muted">$18</span></div>
-                            <div><a role="button" tabindex="0" href="#!"
-                                    class="btn btn-primary btn-sm btn btn-success"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg> Add</a></div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="container">
-
-            <div class="row gap-3 pb-4">
-                <div class="col border rounded ">
-                    <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
-                        <div class="text-center position-relative">
-                            <div class="position-absolute top-0 start-0 ">
-                                <div class="d-flex gap-1 flex-column"><span
-                                        class="custom-badge  badge bg-danger">Sale</span><span
-                                        class="custom-badge  badge bg-success">10%</span></div>
-                            </div><img src="img/product-img-1.jpg" alt="Grocery Ecommerce Template"
-                                class="mb-3 img-fluid"></a>
-                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                    class="fa-regular fa-eye"></i>
-                                <i class="fa-regular fa-heart" id="cardHeartIcon" style="cursor: pointer;"></i>
-
-                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                            </div>
-                        </div>
-                        <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Snack
-                                    &amp; Munchies</small></a></div>
-                        <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Haldiram's Sev
-                                Bhujia</a>
-                        </h2>
-                        <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
-                                <div class="d-flex gap-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                        width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-half text-warning">
-                                        <path
-                                            d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z">
-                                        </path>
-                                    </svg></div>
-                            </small><span class="text-muted small">4.3 (4)</span></div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <div class="pe-2"><span class="text-dark">$21.6 </span><span
-                                    class="text-decoration-line-through text-muted">$24</span></div>
-                            <div><a role="button" tabindex="0" href="#!"
-                                    class="btn btn-primary btn-sm btn btn-success"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg> Add</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col border rounded ">
-                    <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
-                        <div class="text-center position-relative">
-                            <div class="position-absolute top-0 start-0 ">
-                                <div class="d-flex gap-1 flex-column"><span
-                                        class="custom-badge  badge bg-danger">Sale</span><span
-                                        class="custom-badge  badge bg-success">10%</span></div>
-                            </div><img src="img/product-img-2.jpg" alt="Grocery Ecommerce Template"
-                                class="mb-3 img-fluid"></a>
-                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                    class="fa-regular fa-eye"></i>
-                                <i class="fa-regular fa-heart" id="cardHeartIcon" style="cursor: pointer;"></i>
-
-                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                            </div>
-                        </div>
-                        <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Bakery
-                                    &amp; Biscuits</small></a></div>
-                        <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">NutriChoice
-                                Digestive</a>
-                        </h2>
-                        <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
-                                <div class="d-flex gap-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                        width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-half text-warning">
-                                        <path
-                                            d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z">
-                                        </path>
-                                    </svg></div>
-                            </small><span class="text-muted small">4.3 (4)</span></div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <div class="pe-2"><span class="text-dark">$24 </span><span
-                                    class="text-decoration-line-through text-muted">$24</span></div>
-                            <div><a role="button" tabindex="0" href="#!"
-                                    class="btn btn-primary btn-sm btn btn-success"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg> Add</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col border rounded ">
-                    <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
-                        <div class="text-center position-relative">
-                            <div class="position-absolute top-0 start-0 ">
-                                <div class="d-flex gap-1 flex-column"><span
-                                        class="custom-badge  badge bg-danger">Sale</span><span
-                                        class="custom-badge  badge bg-success">10%</span></div>
-                            </div><img src="img/product-img-3.jpg" alt="Grocery Ecommerce Template"
-                                class="mb-3 img-fluid"></a>
-                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                    class="fa-regular fa-eye"></i>
-                                <i class="fa-regular fa-heart" id="cardHeartIcon" style="cursor: pointer;"></i>
-
-                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                            </div>
-                        </div>
-                        <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Bakery
-                                    &amp; Biscuits</small></a></div>
-                        <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Cadbury 5 Star
-                                Chocolate</a>
-                        </h2>
-                        <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
-                                <div class="d-flex gap-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                        width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-half text-warning">
-                                        <path
-                                            d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z">
-                                        </path>
-                                    </svg></div>
-                            </small><span class="text-muted small">4.3 (4)</span></div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <div class="pe-2"><span class="text-dark">$35 </span><span
-                                    class="text-decoration-line-through text-muted">$35</span></div>
-                            <div><a role="button" tabindex="0" href="#!"
-                                    class="btn btn-primary btn-sm btn btn-success"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg> Add</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col border rounded ">
-                    <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
-                        <div class="text-center position-relative">
-                            <div class="position-absolute top-0 start-0 ">
-                                <div class="d-flex gap-1 flex-column"><span
-                                        class="custom-badge  badge bg-danger">Sale</span><span
-                                        class="custom-badge  badge bg-success">10%</span></div>
-                            </div><img src="img/product-img-4.jpg" alt="Grocery Ecommerce Template"
-                                class="mb-3 img-fluid"></a>
-                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                    class="fa-regular fa-eye"></i>
-                                <i class="fa-regular fa-heart" id="cardHeartIcon" style="cursor: pointer;"></i>
-
-                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                            </div>
-                        </div>
-                        <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Snack
-                                    &amp; Munchies</small></a></div>
-                        <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Onion Flavour
-                                Potato</a>
-                        </h2>
-                        <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
-                                <div class="d-flex gap-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                        width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-half text-warning">
-                                        <path
-                                            d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z">
-                                        </path>
-                                    </svg></div>
-                            </small><span class="text-muted small">4.3 (4)</span></div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <div class="pe-2"><span class="text-dark pe-1">$3</span><span
-                                    class="text-decoration-line-through text-muted">$5</span></div>
-                            <div><a role="button" tabindex="0" href="#!"
-                                    class="btn btn-primary btn-sm btn btn-success"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg> Add</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col border rounded ">
-                    <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
-                        <div class="text-center position-relative">
-                            <div class="position-absolute top-0 start-0 ">
-                                <div class="d-flex gap-1 flex-column"><span
-                                        class="custom-badge  badge bg-danger">Sale</span><span
-                                        class="custom-badge  badge bg-success">10%</span></div>
-                            </div><img src="img/product-img-5.jpg" alt="Grocery Ecommerce Template"
-                                class="mb-3 img-fluid"></a>
-                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                    class="fa-regular fa-eye"></i>
-                                <i class="fa-regular fa-heart" id="cardHeartIcon" style="cursor: pointer;"></i>
-
-                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                            </div>
-                        </div>
-                        <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Instant
-                                    Food</small></a></div>
-                        <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Salted Instant
-                                Popcorn</a>
-                        </h2>
-                        <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
-                                <div class="d-flex gap-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                        width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-half text-warning">
-                                        <path
-                                            d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z">
-                                        </path>
-                                    </svg></div>
-                            </small><span class="text-muted small">4.3 (4)</span></div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <div class="pe-2"><span class="text-dark">$11.7</span><span
-                                    class="text-decoration-line-through text-muted">$18</span></div>
-                            <div><a role="button" tabindex="0" href="#!"
-                                    class="btn btn-primary btn-sm btn btn-success"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg> Add</a></div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="container">
-
-            <div class="row gap-3">
-                <div class="col border rounded ">
-                    <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
-                        <div class="text-center position-relative">
-                            <div class="position-absolute top-0 start-0 ">
-                                <div class="d-flex gap-1 flex-column"><span
-                                        class="custom-badge  badge bg-danger">Sale</span><span
-                                        class="custom-badge  badge bg-success">10%</span></div>
-                            </div><img src="img/product-img-1.jpg" alt="Grocery Ecommerce Template"
-                                class="mb-3 img-fluid"></a>
-                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                    class="fa-regular fa-eye"></i>
-                                <i class="fa-regular fa-heart" id="cardHeartIcon" style="cursor: pointer;"></i>
-
-                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                            </div>
-                        </div>
-                        <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Snack
-                                    &amp; Munchies</small></a></div>
-                        <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Haldiram's Sev
-                                Bhujia</a>
-                        </h2>
-                        <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
-                                <div class="d-flex gap-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                        width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-half text-warning">
-                                        <path
-                                            d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z">
-                                        </path>
-                                    </svg></div>
-                            </small><span class="text-muted small">4.3 (4)</span></div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <div class="pe-2"><span class="text-dark">$21.6 </span><span
-                                    class="text-decoration-line-through text-muted">$24</span></div>
-                            <div><a role="button" tabindex="0" href="#!"
-                                    class="btn btn-primary btn-sm btn btn-success"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg> Add</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col border rounded ">
-                    <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
-                        <div class="text-center position-relative">
-                            <div class="position-absolute top-0 start-0 ">
-                                <div class="d-flex gap-1 flex-column"><span
-                                        class="custom-badge  badge bg-danger">Sale</span><span
-                                        class="custom-badge  badge bg-success">10%</span></div>
-                            </div><img src="img/product-img-2.jpg" alt="Grocery Ecommerce Template"
-                                class="mb-3 img-fluid"></a>
-                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                    class="fa-regular fa-eye"></i>
-                                <i class="fa-regular fa-heart" id="cardHeartIcon" style="cursor: pointer;"></i>
-
-                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                            </div>
-                        </div>
-                        <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Bakery
-                                    &amp; Biscuits</small></a></div>
-                        <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">NutriChoice
-                                Digestive</a>
-                        </h2>
-                        <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
-                                <div class="d-flex gap-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                        width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-half text-warning">
-                                        <path
-                                            d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z">
-                                        </path>
-                                    </svg></div>
-                            </small><span class="text-muted small">4.3 (4)</span></div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <div class="pe-2"><span class="text-dark">$24 </span><span
-                                    class="text-decoration-line-through text-muted">$24</span></div>
-                            <div><a role="button" tabindex="0" href="#!"
-                                    class="btn btn-primary btn-sm btn btn-success"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg> Add</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col border rounded ">
-                    <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
-                        <div class="text-center position-relative">
-                            <div class="position-absolute top-0 start-0 ">
-                                <div class="d-flex gap-1 flex-column"><span
-                                        class="custom-badge  badge bg-danger">Sale</span><span
-                                        class="custom-badge  badge bg-success">10%</span></div>
-                            </div><img src="img/product-img-3.jpg" alt="Grocery Ecommerce Template"
-                                class="mb-3 img-fluid"></a>
-                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                    class="fa-regular fa-eye"></i>
-                                <i class="fa-regular fa-heart" id="cardHeartIcon" style="cursor: pointer;"></i>
-
-                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                            </div>
-                        </div>
-                        <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Bakery
-                                    &amp; Biscuits</small></a></div>
-                        <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Cadbury 5 Star
-                                Chocolate</a>
-                        </h2>
-                        <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
-                                <div class="d-flex gap-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                        width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-half text-warning">
-                                        <path
-                                            d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z">
-                                        </path>
-                                    </svg></div>
-                            </small><span class="text-muted small">4.3 (4)</span></div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <div class="pe-2"><span class="text-dark">$35 </span><span
-                                    class="text-decoration-line-through text-muted">$35</span></div>
-                            <div><a role="button" tabindex="0" href="#!"
-                                    class="btn btn-primary btn-sm btn btn-success"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg> Add</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col border rounded ">
-                    <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
-                        <div class="text-center position-relative">
-                            <div class="position-absolute top-0 start-0 ">
-                                <div class="d-flex gap-1 flex-column"><span
-                                        class="custom-badge  badge bg-danger">Sale</span><span
-                                        class="custom-badge  badge bg-success">10%</span></div>
-                            </div><img src="img/product-img-4.jpg" alt="Grocery Ecommerce Template"
-                                class="mb-3 img-fluid"></a>
-                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                    class="fa-regular fa-eye"></i>
-                                <i class="fa-regular fa-heart" id="cardHeartIcon" style="cursor: pointer;"></i>
-
-                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                            </div>
-                        </div>
-                        <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Snack
-                                    &amp; Munchies</small></a></div>
-                        <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Onion Flavour
-                                Potato</a>
-                        </h2>
-                        <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
-                                <div class="d-flex gap-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                        width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-half text-warning">
-                                        <path
-                                            d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z">
-                                        </path>
-                                    </svg></div>
-                            </small><span class="text-muted small">4.3 (4)</span></div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <div class="pe-2"><span class="text-dark pe-1">$3</span><span
-                                    class="text-decoration-line-through text-muted">$5</span></div>
-                            <div><a role="button" tabindex="0" href="#!"
-                                    class="btn btn-primary btn-sm btn btn-success"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg> Add</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col border rounded ">
-                    <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
-                        <div class="text-center position-relative">
-                            <div class="position-absolute top-0 start-0 ">
-                                <div class="d-flex gap-1 flex-column"><span
-                                        class="custom-badge  badge bg-danger">Sale</span><span
-                                        class="custom-badge  badge bg-success">10%</span></div>
-                            </div><img src="img/product-img-5.jpg" alt="Grocery Ecommerce Template"
-                                class="mb-3 img-fluid">
-                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                    class="fa-regular fa-eye"></i>
-                                <i class="fa-regular fa-heart" id="cardHeartIcon" style="cursor: pointer;"></i>
-                                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                            </div>
-                        </div>
-                        <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Instant
-                                    Food</small></a></div>
-                        <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Salted Instant
-                                Popcorn</a>
-                        </h2>
-                        <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
-                                <div class="d-flex gap-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                        width="12" height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-fill text-warning">
-                                        <path
-                                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                                        </path>
-                                    </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="12"
-                                        height="12" fill="currentColor" class="bi bi-star-half text-warning">
-                                        <path
-                                            d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z">
-                                        </path>
-                                    </svg></div>
-                            </small><span class="text-muted small">4.3 (4)</span></div>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <div class="pe-2"><span class="text-dark">$11.7</span><span
-                                    class="text-decoration-line-through text-muted">$18</span></div>
-                            <div><a role="button" tabindex="0" href="#!"
-                                    class="btn btn-primary btn-sm btn btn-success"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg> Add</a></div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
+
+
+    <div class="container mt-4 mb-4  ">
+        <div class="pb-3 ">
+            <h2 class="fs-4 fw-bold">Popular Products</h2>
+        </div>
+        <div class="grid-container">
+            <div class="card  ">
+                <div class="card-body pt-3 pb-3  pe-0 ps-0  ">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0 ">
+                            <div class="d-flex gap-1 flex-column"><span
+                                    class="custom-badge  badge bg-danger">Sale</span><span
+                                    class="custom-badge  badge bg-success">10%</span></div>
+                        </div><img src="img/product-img-1.jpg" alt="Grocery Ecommerce Template"
+                            class="mb-3 img-fluid"></a>
+                        <div class="card-product-action d-flex gap-1 justify-content-center">
+                            <i class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Snack
+                                &amp; Munchies</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Haldiram's Sev
+                            Bhujia</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
+                            <div class="d-flex gap-1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small><span class="text-muted small">4.3 (4)</span></div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-5">
+                        <p class="text-dark mb-0">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+
+                <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0 ">
+                            <div class="d-flex gap-1 flex-column"><span
+                                    class="custom-badge  badge bg-danger">Sale</span><span
+                                    class="custom-badge  badge bg-success">10%</span></div>
+                        </div><img src="img/product-img-2.jpg" alt="Grocery Ecommerce Template"
+                            class="mb-3 img-fluid"></a>
+                        <div class="card-product-action d-flex gap-1 justify-content-center">
+                            <i class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Bakery
+                                &amp; Biscuits</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">NutriChoice
+                            Digestive</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
+                            <div class="d-flex gap-1"> <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small><span class="text-muted small">4.3 (4)</span></div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-5">
+                        <p class="text-dark mb-0">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0 ">
+                            <div class="d-flex gap-1 flex-column"><span
+                                    class="custom-badge  badge bg-danger">Sale</span><span
+                                    class="custom-badge  badge bg-success">10%</span></div>
+                        </div><img src="img/product-img-3.jpg" alt="Grocery Ecommerce Template"
+                            class="mb-3 img-fluid"></a>
+                        <div class="card-product-action d-flex gap-1 justify-content-center"> <i
+                                class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Bakery
+                                &amp; Biscuits</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Cadbury 5 Star</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
+                            <div class="d-flex gap-1"> <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small><span class="text-muted small">4.3 (4)</span></div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-5">
+                        <p class="text-dark mb-0">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0 ">
+                            <div class="d-flex gap-1 flex-column"><span
+                                    class="custom-badge  badge bg-danger">Sale</span><span
+                                    class="custom-badge  badge bg-success">10%</span></div>
+                        </div><img src="img/product-img-4.jpg" alt="Grocery Ecommerce Template"
+                            class="mb-3 img-fluid"></a>
+                        <div class="card-product-action d-flex gap-1 justify-content-center"> <i
+                                class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Snack
+                                &amp; Munchies</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Onion Flavour
+                            Potato</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
+                            <div class="d-flex gap-1"> <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small><span class="text-muted small">4.3 (4)</span></div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-5">
+                        <p class="text-dark mb-0">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body pt-3 pb-3 pe-0 ps-0">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0">
+                            <div class="d-flex gap-1 flex-column">
+                                <span class="custom-badge badge bg-danger">Sale</span>
+                                <span class="custom-badge badge bg-success">10%</span>
+                            </div>
+                        </div>
+                        <img src="img/product-img-5.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid">
+                        <div class="card-product-action d-flex gap-1 justify-content-center">
+                            <i class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1">
+                        <a class="text-decoration-none text-muted" href="#!"><small>Instant Food</small></a>
+                    </div>
+                    <h2 class="fs-6 cardheading">
+                        <a class="text-inherit text-decoration-none" href="">Salted Popcorn</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center">
+                        <small class="text-warning">
+                            <div class="d-flex gap-1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small>
+                        <span class="text-muted small">4.3 (4)</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-5">
+                        <p class="text-dark mb-0">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card  ">
+                <div class="card-body pt-3 pb-3  pe-0 ps-0  ">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0 ">
+                            <div class="d-flex gap-1 flex-column"><span
+                                    class="custom-badge  badge bg-danger">Sale</span><span
+                                    class="custom-badge  badge bg-success">10%</span></div>
+                        </div><img src="img/product-img-1.jpg" alt="Grocery Ecommerce Template"
+                            class="mb-3 img-fluid"></a>
+                        <div class="card-product-action d-flex gap-1 justify-content-center"> <i
+                                class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Snack
+                                &amp; Munchies</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Haldiram's Sev
+                            Bhujia</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
+                            <div class="d-flex gap-1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small><span class="text-muted small">4.3 (4)</span></div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-5">
+                        <p class="text-dark mb-0">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+
+                <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0 ">
+                            <div class="d-flex gap-1 flex-column"><span
+                                    class="custom-badge  badge bg-danger">Sale</span><span
+                                    class="custom-badge  badge bg-success">10%</span></div>
+                        </div><img src="img/product-img-2.jpg" alt="Grocery Ecommerce Template"
+                            class="mb-3 img-fluid"></a>
+                        <div class="card-product-action d-flex gap-1 justify-content-center"> <i
+                                class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Bakery
+                                &amp; Biscuits</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">NutriChoice
+                            Digestive</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
+                            <div class="d-flex gap-1"> <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small><span class="text-muted small">4.3 (4)</span></div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-5">
+                        <p class="text-dark mb-0">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0 ">
+                            <div class="d-flex gap-1 flex-column"><span
+                                    class="custom-badge  badge bg-danger">Sale</span><span
+                                    class="custom-badge  badge bg-success">10%</span></div>
+                        </div><img src="img/product-img-3.jpg" alt="Grocery Ecommerce Template"
+                            class="mb-3 img-fluid"></a>
+                        <div class="card-product-action d-flex gap-1 justify-content-center"> <i
+                                class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Bakery
+                                &amp; Biscuits</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Cadbury 5 Star</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
+                            <div class="d-flex gap-1"> <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small><span class="text-muted small">4.3 (4)</span></div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-5">
+                        <p class="text-dark mb-0">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0 ">
+                            <div class="d-flex gap-1 flex-column"><span
+                                    class="custom-badge  badge bg-danger">Sale</span><span
+                                    class="custom-badge  badge bg-success">10%</span></div>
+                        </div><img src="img/product-img-4.jpg" alt="Grocery Ecommerce Template"
+                            class="mb-3 img-fluid"></a>
+                        <div class="card-product-action d-flex gap-1 justify-content-center"> <i
+                                class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Snack
+                                &amp; Munchies</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Onion Flavour
+                            Potato</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
+                            <div class="d-flex gap-1"> <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small><span class="text-muted small">4.3 (4)</span></div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-5">
+                        <p class="text-dark mb-0">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body pt-3 pb-3 pe-0 ps-0">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0">
+                            <div class="d-flex gap-1 flex-column">
+                                <span class="custom-badge badge bg-danger">Sale</span>
+                                <span class="custom-badge badge bg-success">10%</span>
+                            </div>
+                        </div>
+                        <img src="img/product-img-5.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid">
+                        <div class="card-product-action d-flex gap-1 justify-content-center">
+                            <i class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1">
+                        <a class="text-decoration-none text-muted" href="#!"><small>Instant Food</small></a>
+                    </div>
+                    <h2 class="fs-6 cardheading">
+                        <a class="text-inherit text-decoration-none" href="">Salted Popcorn</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center">
+                        <small class="text-warning">
+                            <div class="d-flex gap-1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small>
+                        <span class="text-muted small">4.3 (4)</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-5">
+                        <p class="text-dark mb-0">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card  ">
+                <div class="card-body pt-3 pb-3  pe-0 ps-0  ">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0 ">
+                            <div class="d-flex gap-1 flex-column"><span
+                                    class="custom-badge  badge bg-danger">Sale</span><span
+                                    class="custom-badge  badge bg-success">10%</span></div>
+                        </div><img src="img/product-img-1.jpg" alt="Grocery Ecommerce Template"
+                            class="mb-3 img-fluid"></a>
+                        <div class="card-product-action d-flex gap-1 justify-content-center"> <i
+                                class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Snack
+                                &amp; Munchies</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Haldiram's Sev
+                            Bhujia</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
+                            <div class="d-flex gap-1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small><span class="text-muted small">4.3 (4)</span></div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-5">
+                        <p class="text-dark mb-0">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0 ">
+                            <div class="d-flex gap-1 flex-column"><span
+                                    class="custom-badge  badge bg-danger">Sale</span><span
+                                    class="custom-badge  badge bg-success">10%</span></div>
+                        </div><img src="img/product-img-2.jpg" alt="Grocery Ecommerce Template"
+                            class="mb-3 img-fluid"></a>
+                        <div class="card-product-action d-flex gap-1 justify-content-center"> <i
+                                class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Bakery
+                                &amp; Biscuits</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">NutriChoice
+                            Digestive</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
+                            <div class="d-flex gap-1"> <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small><span class="text-muted small">4.3 (4)</span></div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-5">
+                        <p class="text-dark mb-0">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0 ">
+                            <div class="d-flex gap-1 flex-column"><span
+                                    class="custom-badge  badge bg-danger">Sale</span><span
+                                    class="custom-badge  badge bg-success">10%</span></div>
+                        </div><img src="img/product-img-3.jpg" alt="Grocery Ecommerce Template"
+                            class="mb-3 img-fluid"></a>
+                        <div class="card-product-action d-flex gap-1 justify-content-center"> <i
+                                class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Bakery
+                                &amp; Biscuits</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Cadbury 5 Star</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
+                            <div class="d-flex gap-1"> <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small><span class="text-muted small">4.3 (4)</span></div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-5">
+                        <p class="text-dark mb-0">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0 ">
+                            <div class="d-flex gap-1 flex-column"><span
+                                    class="custom-badge  badge bg-danger">Sale</span><span
+                                    class="custom-badge  badge bg-success">10%</span></div>
+                        </div><img src="img/product-img-4.jpg" alt="Grocery Ecommerce Template"
+                            class="mb-3 img-fluid"></a>
+                        <div class="card-product-action d-flex gap-1 justify-content-center"> <i
+                                class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Snack
+                                &amp; Munchies</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Onion Flavour
+                            Potato</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
+                            <div class="d-flex gap-1"> <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small><span class="text-muted small">4.3 (4)</span></div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-5">
+                        <p class="text-dark mb-0">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body pt-3 pb-3 pe-0 ps-0">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0">
+                            <div class="d-flex gap-1 flex-column">
+                                <span class="custom-badge badge bg-danger">Sale</span>
+                                <span class="custom-badge badge bg-success">10%</span>
+                            </div>
+                        </div>
+                        <img src="img/product-img-5.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid">
+                        <div class="card-product-action d-flex gap-1 justify-content-center">
+                            <i class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1">
+                        <a class="text-decoration-none text-muted" href="#!"><small>Instant Food</small></a>
+                    </div>
+                    <h2 class="fs-6 cardheading">
+                        <a class="text-inherit text-decoration-none" href="">Salted Popcorn</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center">
+                        <small class="text-warning">
+                            <div class="d-flex gap-1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small>
+                        <span class="text-muted small">4.3 (4)</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-5">
+                        <p class="text-dark mb-0">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container mt-4 mb-4 pt-5 pb-5">
+        <div class="pb-3 ">
+            <h2 class="fs-4 fw-bold">Daily Best Sells</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card border-0" id="cardimg">
+                    <div class="card-wrap px-3 py-3">
+                        <div>
+                            <h3 class="fw-bold text-white" style="font-size: 24px;">100% Organic Coffee Beans.</h3>
+                            <p class="text-white">Get the best deal before close.</p><a
+                                class="btn btn-success pe-4 ps-4" href="">Shop Now<i
+                                    class="fa-solid fa-arrow-right ps-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-wrap px-3 py-3">
+                        <div class="text-center position-relative">
+                            <div class="position-absolute top-0 start-0 ">
+                            </div><img src="img/product-img-11.jpg" alt="Grocery Ecommerce Template"
+                                class="mb-3 img-fluid"></a>
+                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
+                                    class="fa-regular fa-eye i"></i>
+                                <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                                <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                            </div>
+                        </div>
+                        <span class="text-muted">Tea, Coffee & Drinks</span>
+                        <p class="fw-bold">Roast Ground Coffee</p>
+                        <div class="d-flex justify-content-between align-items-center ">
+                            <p class="text-dark mb-0">
+                                $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                            </p>
+                            <p class="m-0 " style="font-size: 14px;">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                                $4.3
+                            </p>
+                        </div>
+                        <div class="mt-2"> <a role="button" tabindex="0" href="#!"
+                                class="btn btn-success btn-sm m-0 w-100 py-2">
+                                <i class="fa-solid fa-plus pe-2"></i> Add to cart
+                            </a></div>
+                        <div class="timer mt-3 d-flex justify-content-between gap-2">
+                            <div class="bg text-muted">
+                                <span class="days">1362</span>
+                                Days
+                            </div>
+                            <div class="bg text-muted">
+                                <span class="hours">10</span>
+                                Hours
+                            </div>
+                            <div class="bg text-muted">
+                                <span class="minutes">41</span>
+                                Mins
+                            </div>
+                            <div class="bg text-muted">
+                                <span class="seconds">3</span>
+                                Sec
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-wrap px-3 py-3">
+                        <div class="text-center position-relative">
+                            <div class="position-absolute top-0 start-0 ">
+                            </div><img src="img/product-img-12.jpg" alt="Grocery Ecommerce Template"
+                                class="mb-3 img-fluid"></a>
+                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
+                                    class="fa-regular fa-eye i"></i>
+                                <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                                <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                            </div>
+                        </div>
+                        <span class="text-muted">Tea, Coffee & Drinks</span>
+                        <p class="fw-bold">Roast Ground Coffee</p>
+                        <div class="d-flex justify-content-between align-items-center ">
+                            <p class="text-dark mb-0">
+                                $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                            </p>
+                            <p class="m-0 " style="font-size: 14px;">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i> $4.3
+                            </p>
+                        </div>
+                        <div class="mt-2"> <a role="button" tabindex="0" href="#!"
+                                class="btn btn-success btn-sm m-0 w-100 py-2">
+                                <i class="fa-solid fa-plus pe-2"></i> Add to cart
+                            </a></div>
+                        <div class="timer mt-3 d-flex justify-content-between gap-2">
+                            <div class="bg text-muted">
+                                <span class="days">1362</span>
+                                Days
+                            </div>
+                            <div class="bg text-muted">
+                                <span class="hours">10</span>
+                                Hours
+                            </div>
+                            <div class="bg text-muted">
+                                <span class="minutes">41</span>
+                                Mins
+                            </div>
+                            <div class="bg text-muted">
+                                <span class="seconds">3</span>
+                                Sec
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-wrap px-3 py-3">
+                        <div class="text-center position-relative">
+                            <div class="position-absolute top-0 start-0 ">
+                            </div><img src="img/product-img-13.jpg" alt="Grocery Ecommerce Template"
+                                class="mb-3 img-fluid"></a>
+                            <div class="card-product-action d-flex gap-1 justify-content-center"> <i
+                                    class="fa-regular fa-eye i"></i>
+                                <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                                <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                            </div>
+                        </div>
+                        <span class="text-muted">Tea, Coffee & Drinks</span>
+                        <p class="fw-bold">Roast Ground Coffee</p>
+                        <div class="d-flex justify-content-between align-items-center ">
+                            <p class="text-dark mb-0">
+                                $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                            </p>
+                            <p class="m-0 " style="font-size: 14px;">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                                $4.3
+                            </p>
+                        </div>
+                        <div class="mt-2"> <a role="button" tabindex="0" href="#!"
+                                class="btn btn-success btn-sm m-0 w-100 py-2">
+                                <i class="fa-solid fa-plus pe-2"></i> Add to cart
+                            </a></div>
+                        <div class="timer mt-3 d-flex justify-content-between gap-2">
+                            <div class="bg text-muted">
+                                <span class="days">1362</span>
+                                Days
+                            </div>
+                            <div class="bg text-muted">
+                                <span class="hours">10</span>
+                                Hours
+                            </div>
+                            <div class="bg text-muted">
+                                <span class="minutes">41</span>
+                                Mins
+                            </div>
+                            <div class="bg text-muted">
+                                <span class="seconds">3</span>
+                                Sec
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- icons with content -->
     <div class="container mt-5 pt-5 pb-5 mb-5">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="icon">
                     <i class="fa-regular fa-clock"></i>
                 </div>
@@ -1384,7 +1199,7 @@
                         you.</p>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="icon">
                     <i class="fa-solid fa-gift"></i>
                 </div>
@@ -1396,7 +1211,7 @@
                         pricess & offers.</p>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="icon">
                     <i class="fa-solid fa-box"></i>
                 </div>
@@ -1408,7 +1223,7 @@
                         other categories.</p>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="icon">
                     <i class="fa-regular fa-clock"></i>
                 </div>
@@ -1422,10 +1237,10 @@
 
         </div>
     </div>
-
+    <!--  -->
     <section class="mt-5 " style="background-color: #f0f3f2">
         <div class="container pt-5 ">
-            <div class="row">
+            <div class="row ">
                 <div class="col-lg-4 col-md-12 col-12 ">
                     <h6 class="mb-4 ps-1">Categories</h6>
                     <div class="row ">
@@ -1532,9 +1347,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8 col-md-6 col-sm-12 m-0 p-0">
+                <div class="col-lg-8 col-md-12 col-sm-12 m-0 p-0">
                     <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-6">
                             <h6 class="mb-4 ps-3">Get to know us</h6>
                             <div class="flex-column nav ">
                                 <div class=" nav-item">
@@ -1559,7 +1374,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-12 col-md-6">
+                        <div class="col-lg-3 col-md-6">
                             <h6 class="mb-4 ps-3">For Consumers
                             </h6>
                             <div class="flex-column nav ">
@@ -1589,7 +1404,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-3 col-md-6 ">
                             <h6 class="mb-4 ps-3">Become a Shopper
                             </h6>
                             <div class="flex-column nav ">
@@ -1623,7 +1438,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-sm-12 col-md-6">
+                        <div class="col-lg-3  col-md-6">
                             <h6 class="mb-4 ps-3">Freshcart programs
 
                             </h6>
@@ -1666,36 +1481,62 @@
             </div>
         </div>
         <footer class="bg-light py-3">
-            <div class="container d-flex justify-content-between align-items-center">
+            <div class="container">
                 <!-- Payment Partners -->
-                <div>
-                    <span class="fw-bold">Payment Partners: </span>
-                    <i class="fa-brands fa-amazon" style="color: #004e8a;"></i> <img
-                        src="https://via.placeholder.com/50x30" alt="American Express" class="img-fluid mx-2">
-                    <img src="https://via.placeholder.com/50x30" alt="MasterCard" class="img-fluid mx-2">
-                    <img src="https://via.placeholder.com/50x30" alt="PayPal" class="img-fluid mx-2">
-                    <img src="https://via.placeholder.com/50x30" alt="Visa" class="img-fluid mx-2">
-                </div>
-                <!-- App Store Links -->
-                <div>
-                    <span class="fw-bold">Get deliveries with FreshCart: </span>
-                    <a href="#" class="me-2 " type="button">
-                        <button class="btn btn-dark"><i class="fa-brands fa-app-store me-2 fs-5 "></i>App store</button>
-                    </a>
-                    <a href="#">
-                        <img src="https://via.placeholder.com/120x40" alt="Google Play" class="img-fluid">
-                    </a>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <!-- Payment Partners Section -->
+                            <div class="col-lg-6 col-md-12 col-sm-12 mb-3 text-center text-lg-start">
+                                <span class="fw-bold">Payment Partners: </span>
+                                <img src="https://freshcart-next-js.vercel.app/images/payment/amazonpay.svg"
+                                    alt="Amazon Pay" class="img-fluid mx-2">
+                                <img src="https://freshcart-next-js.vercel.app/images/payment/american-express.svg"
+                                    alt="American Express" class="img-fluid mx-2">
+                                <img src="https://freshcart-next-js.vercel.app/images/payment/mastercard.svg"
+                                    alt="Master Card" class="img-fluid mx-2">
+                                <img src="https://freshcart-next-js.vercel.app/images/payment/paypal.svg" alt="PayPal"
+                                    class="img-fluid mx-2">
+                                <img src="https://freshcart-next-js.vercel.app/images/payment/visa.svg" alt="Visa"
+                                    class="img-fluid mx-2">
+                            </div>
+
+                            <!-- App Store Links Section -->
+                            <div class="col-lg-6 col-md-12 col-sm-12 text-center ">
+                                <div
+                                    class="d-flex flex-column flex-lg-row justify-content-center justify-content-lg-end align-items-center">
+                                    <div class="mb-3 mb-lg-0">
+                                        <div class="text-dark mb-2 me-2">Get deliveries with FreshCart</div>
+                                    </div>
+                                    <div class="me-lg-3 mb-3 mb-lg-0">
+                                        <a href="#!">
+                                            <img src="https://freshcart-next-js.vercel.app/images/appbutton/appstore-btn.svg"
+                                                alt="App Store" class="img-fluid" style="width: 140px;">
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a href="#!">
+                                            <img src="https://freshcart-next-js.vercel.app/images/appbutton/googleplay-btn.svg"
+                                                alt="Google Play" class="img-fluid" style="width: 140px;">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>
+
     </section>
+
     <div class="fixed-btn-container">
         <button class="fixed-btn ps-3 pe-3 pt-2 pb-2 rounded"> <i class="fa-solid fa-cart-shopping"></i>
             Book Now</button>
     </div>
 
     <script src="js/script.js"></script>
-
+    <script src="js/slick-slider.js"></script>
 </body>
 
 </html>

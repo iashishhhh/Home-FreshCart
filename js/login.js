@@ -1,50 +1,99 @@
-const form = document.querySelector('form');
-const inputs = form.querySelectorAll('input[required]');
+document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.querySelector('form');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const checkboxInput = document.getElementById('checkbox');
+    const loginButton = document.querySelector('button[type="submit"]');
 
-form.addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent form submission
-    let isValid = true;
-    document.querySelectorAll('.error-message').forEach(msg => msg.remove());
-    inputs.forEach(input => input.style.borderColor = '');
-    inputs.forEach(input => {
-        const value = input.value.trim();
+    // Function to show error
+    function showError(input, message) {
+        const formControl = input.parentElement;
+        // Remove existing error message if any
+        const existingError = formControl.querySelector('.error-message');
+        if (existingError) {
+            existingError.remove();
+        }
+        
+        // Create and add new error message
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message text-danger mt-1';
+        errorDiv.innerText = message;
+        formControl.appendChild(errorDiv);
+        
+        // Add error class to input
+        input.classList.add('is-invalid');
+        input.style.borderColor = 'red';
+    }
 
-        if (!value) {
-            showError(input, `${getLabelText(input)} is required.`);
+    // Function to remove error
+    function removeError(input) {
+        const formControl = input.parentElement;
+        const errorDiv = formControl.querySelector('.error-message');
+        if (errorDiv) {
+            errorDiv.remove();
+        }
+        input.classList.remove('is-invalid');
+        input.style.borderColor = '';
+    }
+
+    // Function to validate email format
+    function isValidEmail(email) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+    }
+
+    // Function to validate form on input
+    function validateInputs() {
+        let isValid = true;
+
+        // Validate email
+        if (emailInput.value.trim() === '') {
+            showError(emailInput, 'Email is required');
             isValid = false;
-        } else if (input.type === 'email' && !validateEmail(value)) {
-            showError(input, 'Please enter a valid email address.');
+        } else if (!isValidEmail(emailInput.value.trim())) {
+            showError(emailInput, 'Please enter a valid email');
             isValid = false;
-        } else if (input.type === 'password' && value.length < 6) {
-            showError(input, 'Password must be at least 6 characters long.');
+        } else {
+            removeError(emailInput);
+        }
+
+        // Validate password
+        if (passwordInput.value.trim() === '') {
+            showError(passwordInput, 'Password is required');
             isValid = false;
+        } else if (passwordInput.value.length < 6) {
+            showError(passwordInput, 'Password must be at least 6 characters');
+            isValid = false;
+        } else {
+            removeError(passwordInput);
+        }
+
+        // Validate checkbox
+        if (!checkboxInput.checked) {
+            showError(checkboxInput, 'You must accept the terms and conditions');
+            isValid = false;
+        } else {
+            removeError(checkboxInput);
+        }
+
+        // Enable/disable login button based on validation
+        loginButton.disabled = !isValid;
+        return isValid;
+    }
+
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (validateInputs()) {
+            window.location.href = 'loginsite.html';
         }
     });
 
-    if (isValid) {
-        alert('Form submitted successfully!');
-        form.submit();
-    }
+    // Validate on input
+    emailInput.addEventListener('input', validateInputs);
+    passwordInput.addEventListener('input', validateInputs);
+    checkboxInput.addEventListener('change', validateInputs);
+
+    // Initial validation
+    validateInputs();
 });
-
-function validateEmail(email) {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(email);
-}
-
-function showError(input, message) {
-    input.style.borderColor = 'red';
-
-    const parent = input.closest('.col-12');
-    const errorElement = document.createElement('div');
-    errorElement.classList.add('error-message');
-    errorElement.style.color = 'red';
-    errorElement.style.marginTop = '5px';
-    errorElement.textContent = message;
-    parent.appendChild(errorElement);
-}
-
-function getLabelText(input) {
-    const label = input.closest('.col-12').querySelector('label');
-    return label ? label.textContent.replace('*', '').trim() : 'This field';
-}

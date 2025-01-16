@@ -79,3 +79,11 @@
         border-color: #80bdff;
         box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
     }
+
+.error-border {
+    border: 1px solid #dc3545 !important;
+}
+
+.error-message {
+    font-size: 0.875rem;
+}

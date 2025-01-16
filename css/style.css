@@ -673,3 +673,24 @@ input {
 .icon i {
   color: var(--primary-color);
 }
+.mega-menu {
+  border-radius: 0;
+  margin-top: 0;
+  border-top: 1px solid #dee2e6;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  color: #6c757d;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #198754;
+}
+
+.dropdown-header {
+  font-weight: 600;
+  color: #212529;
+  padding: 0.5rem 1rem;
+}

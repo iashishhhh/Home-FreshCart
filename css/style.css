@@ -10,14 +10,9 @@
   font-style: normal;
 }
 
-.form-input {
+.form-input, .custom-box, .card .i {
   border-radius: 5px;
   border: 1px solid black;
-
-  &:focus {
-    border-radius: 5px;
-    border: none;
-  }
 }
 
 .nav-link i {
@@ -253,18 +248,13 @@ p i {
 
 
 .card .i {
-  border-radius: 8px;
-  box-shadow: 4px 0 3px rgba(0, 0, 0, 0.1);
+  padding: 10px;
   color: #000000;
   background-color: rgb(255, 255, 255);
-  padding-top: 10px;
-  padding-bottom: 10px;
   opacity: 0;
   visibility: hidden;
-  padding-right: 10px;
-  padding-left: 10px;
   margin-top: 15px;
-  transition: color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .card:hover .card-product-action i {
@@ -281,7 +271,7 @@ p i {
   padding-bottom: 10px;
   padding-right: 10px;
   padding-left: 10px;
-  transition: color 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .card-product-action {
@@ -659,4 +649,27 @@ input {
 }
 .bg span{
   color: black;
+}
+
+/* Use CSS variables for consistent font sizes */
+:root {
+  --font-size-base: 14px;
+  --font-size-large: 18px;
+  --font-size-xl: 24px;
+}
+
+/* Apply these consistently */
+.content h3 { font-size: var(--font-size-large); }
+.content p { font-size: var(--font-size-base); }
+
+:root {
+  --primary-color: green;
+  --shadow: 4px 0 3px rgba(0, 0, 0, 0.1);
+  --border-color: #ddd;
+  --font-size-small: 14px;
+}
+
+/* Then use these variables throughout the code */
+.icon i {
+  color: var(--primary-color);
 }

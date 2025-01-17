@@ -16,11 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
         errorDiv.innerText = message;
         formControl.appendChild(errorDiv);
         
-        input.classList.add('is-invalid'); 
+        input.classList.add('is-invalid');
         input.style.borderColor = 'red';
     }
 
-    // Function to remove error
     function removeError(input) {
         const formControl = input.parentElement;
         const errorDiv = formControl.querySelector('.error-message');
@@ -31,17 +30,14 @@ document.addEventListener('DOMContentLoaded', function() {
         input.style.borderColor = '';
     }
 
-    // Function to validate email format
     function isValidEmail(email) {
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailPattern.test(email);
     }
 
-    // Function to validate form
     function validateInputs() {
         let isValid = true;
 
-        // Validate email
         if (emailInput.value.trim() === '') {
             showError(emailInput, 'Email is required');
             isValid = false;
@@ -52,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
             removeError(emailInput);
         }
 
-        // Enable/disable submit button based on validation
         submitButton.disabled = !isValid;
         return isValid;
     }
@@ -62,8 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (validateInputs()) {
             try {
-                // Assuming you have an API endpoint to check the email
-                const response = await fetch('/api/check-email', {
+                const response = await fetch('http://localhost:3000/user/forgotpassword', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -73,12 +67,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 const data = await response.json();
                 
-                if (data.exists) {
-                    // If email exists, redirect to next page
-                    window.location.href = '/reset-password'; // Change this URL as needed
+                if (response.ok) {
+                    alert('Password reset link has been sent to your email');
+                    window.location.href = 'reset-password.html'; // Redirect to reset password page
                 } else {
-                    // If email doesn't exist, show error message
-                    showError(emailInput, 'Email not found in our records');
+                    showError(emailInput, data.message || 'Email not found in our records');
                 }
             } catch (error) {
                 console.error('Error:', error);
@@ -87,9 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Validate on input
     emailInput.addEventListener('input', validateInputs);
 
-    // Initial validation
     validateInputs();
-}); 
+});

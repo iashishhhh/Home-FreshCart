@@ -56,29 +56,33 @@
 }
 
 @media (max-width: 768px) {
-    #loginform {
+
+    #loginform,
+    #signupform,
+    #forgotPasswordform,
+    #resetPasswordform {
         background: #f2994a;
         background: -webkit-linear-gradient(to right, #f2c94c, #f2994a);
         background: linear-gradient(to right, #f2c94c, #f2994a);
     }
 }
 
-    .error-message {
-        color: red;
-        font-size: 0.875rem;
-        margin-top: 5px;
-    }
+.error-message {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 5px;
+}
 
-    input {
-        border: 1px solid #ced4da;
-        border-radius: 4px;
-    }
+input {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
 
-    input:focus {
-        outline: none;
-        border-color: #80bdff;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
-    }
+input:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
 
 .error-border {
     border: 1px solid #dc3545 !important;

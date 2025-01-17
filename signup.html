@@ -10,43 +10,51 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/forms.css">
-    <title>login freshcart</title>
-
+    <title>Sign Up freshcart</title>
 </head>
 
 <body>
-
-    <!-- Login 3 - Bootstrap Brain Component -->
-    <section class="p-3 p-md-4 p-xl-5 login-container ">
-        <div class="container ">
+    <section class="p-3 p-md-4 p-xl-5 login-container">
+        <div class="container">
             <div class="row d-flex justify-content-center">
-                <div class="col-lg-10 shadow-lg rounded-5  bg-light">
+                <div class="col-lg-10 shadow-lg rounded-5 bg-light">
                     <div class="row">
-                        <div class="col-12 col-md-6 bg-light  form-wrapper rounded-start-5 d-none d-md-block">
-                            <div class="d-flex flex-column justify-content-between h-100 p-3 p-md-4 p-xl-5 ">
-                                <div class="cart m-0 p-0 w-100 ">
-                                    <div class="cart-body m-0 p-0  w-100 text-uppercase fw-bold">
+                        <div class="col-12 col-md-6 bg-light form-wrapper rounded-start-5 d-none d-md-block">
+                            <div class="d-flex flex-column justify-content-between h-100 p-3 p-md-4 p-xl-5">
+                                <div class="cart m-0 p-0 w-100">
+                                    <div class="cart-body m-0 p-0 w-100 text-uppercase fw-bold">
                                         <a href=""><img src="img/freshcart-logo.svg" width="50%" alt=""></a>
                                     </div>
                                 </div>
-
-                                <p class="m-0 p-0">Not a member yet? <a href="signup.html"
-                                        class=" text-black fs-5">Register
-                                        now</a></p>
+                                <p class="m-0 p-0">Already a member? <a href="loginsite.html" class="text-black fs-5">Login here</a></p>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 rounded-5 " id="loginform">
+                        <div class="col-12 col-md-6 rounded-5" id="signupform">
                             <div class="p-3 p-md-4 p-xl-5">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="mb-5">
                                             <h3 class="text-uppercase fs-1"><a href=""><img src="img/freshcart-logo.svg"
-                                                        width="40%" alt=""></a> </h3>
+                                                        width="40%" alt=""></a></h3>
                                         </div>
                                     </div>
                                 </div>
-                                <form action="http://localhost:3000/user/login" id="loginForm">
+                                <form action="http://localhost:3000/user/signup" id="signupForm" method="post">
                                     <div class="row gy-3 gy-md-4 overflow-hidden">
+                                        <div class="col-12">
+                                            <label for="fullname" class="form-label fw-bold">Full Name <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form rounded shadow py-2 px-2 w-100" name="fullname"
+                                                id="fullname" placeholder="Enter your Full Name">
+                                            <small class="text-danger" id="fullnameError"></small>
+                                        </div>
+                                        <div class="col-12">
+                                            <label for="phone" class="form-label fw-bold">Phone Number <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="tel" class="form rounded shadow py-2 px-2 w-100" name="phone"
+                                                id="phone" placeholder="Enter your Phone Number">
+                                            <small class="text-danger" id="phoneError"></small>
+                                        </div>
                                         <div class="col-12">
                                             <label for="email" class="form-label fw-bold">Email <span
                                                     class="text-danger">*</span></label>
@@ -63,29 +71,17 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-check p-0">
-                                                <input type="checkbox" id="checkbox" name="checkbox">
-                                                <label class="form-check-label text-black" for="remember_me">Keep me
-                                                    logged in</label>
+                                                <input type="checkbox" id="terms" name="terms">
+                                                <label class="form-check-label text-black" for="terms">I agree to the Terms and Conditions</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">
-                                                <button class="btn btn-success py-2" type="submit">Log in now</button>
+                                                <button class="btn btn-success py-2" type="submit">Sign Up</button>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
-
-                                <div class="row">
-                                    <div class="col-12">
-                                        <hr class="mt-5 mb-4 border-secondary-subtle">
-                                        <div class="text-end">
-                                            <a href="forget-password.html"
-                                                class=" text-decoration-none text-black fw-bold">Forgot
-                                                password?</a>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -93,7 +89,7 @@
             </div>
         </div>
     </section>
-    <script src="js/login.js"></script>
+    <script src="js/signup.js"></script>
 </body>
 
 </html>

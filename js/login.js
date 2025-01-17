@@ -13,13 +13,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (existingError) {
             existingError.remove();
         }
-        
+
         // Create and add new error message
         const errorDiv = document.createElement('div');
         errorDiv.className = 'error-message text-danger mt-1';
         errorDiv.innerText = message;
         formControl.appendChild(errorDiv);
-        
+
         // Add error class to input
         input.classList.add('is-invalid');
         input.style.borderColor = 'red';
@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return emailPattern.test(email);
     }
 
-    // Function to validate form on input
     function validateInputs() {
         let isValid = true;
 
@@ -81,11 +80,44 @@ document.addEventListener('DOMContentLoaded', function() {
         return isValid;
     }
 
+    // Function to handle API login
+    async function loginApi(email, password) {
+        try {
+            const response = await fetch('http://localhost:3000/user/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({email, password})
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Login successful:', data);
+                alert('Login successfull')
+                localStorage.setItem("token", data.token);
+                window.location.href = "index.html";
+            } 
+            // if(response.ok){
+            //     window.location.href = 'loginsite.html'; 
+            // }
+                else {
+                const error = await response.json();
+                console.error('Login failed:', error);
+            }       
+        } catch (error) {
+            console.error('Error during signup:', error);
+            alert('An error occurred during signup. Please try again later.');
+        }
+    }
+
     loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
+
         if (validateInputs()) {
-            window.location.href = 'loginsite.html';
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+            loginApi(email, password);
         }
     });
 

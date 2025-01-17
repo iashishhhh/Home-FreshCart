@@ -24,7 +24,6 @@ $(document).ready(function () {
     ]
   })
 
-  // Custom navigation buttons
   $('.custom-prev').on('click', function () {
     if ($('.custom-slider').slick) {
       $('.custom-slider').slick('slickPrev')
@@ -38,7 +37,6 @@ $(document).ready(function () {
   })
 })
 
-// Wait until the page is fully loaded
 window.addEventListener('load', function () {
   // Check if the preloader has been shown before
   if (!localStorage.getItem('preloaderShown')) {
@@ -47,7 +45,6 @@ window.addEventListener('load', function () {
       localStorage.setItem('preloaderShown', 'true'); // Mark preloader as shown
     }, 2000);
   } else {
-    // Skip preloader if already shown before
     document.body.classList.add('loaded');
   }
 });
@@ -67,18 +64,15 @@ document.addEventListener("DOMContentLoaded", function () {
             msg.textContent = '';
         });
 
-        // Remove previous invalid/valid class
         document.querySelectorAll('input').forEach(function (input) {
             input.classList.remove('invalid', 'valid');
         });
 
-        // Get the form field values
         const username = document.getElementById("username").value;
         const email = document.getElementById("email").value;
         const password = document.getElementById("password").value;
         let isValid = true;
 
-        // Validate Username
         if (username === '') {
             document.getElementById("usernameError").textContent = 'Username is required.';
             document.getElementById("username").classList.add('invalid'); // Red border for invalid
@@ -119,7 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("password").classList.add('valid'); // Green border for valid
         }
 
-        // If the form is valid, submit it (you can handle the form submission logic here)
         if (isValid) {
             alert('Form submitted successfully!');
             

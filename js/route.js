@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to send OTP
     async function sendOTP() {
-        const token = localStorage.getItem('authToken'); // Retrieve token from localStorage
+        const token = localStorage.getItem('authToken');
 
         if (!token) {
             otpError.textContent = 'User not authenticated. Please log in first.';
@@ -21,10 +21,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         try {
             const response = await fetch('http://localhost:3000/user/mail', {
-                method: 'GET', // POST request to send the email for OTP
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`, // Send token in Authorization header
+                    'Authorization': `Bearer ${token}`,
                 },
             });
 
@@ -89,14 +89,11 @@ document.addEventListener('DOMContentLoaded', function () {
     forgotPasswordLink.addEventListener('click', async (e) => {
         e.preventDefault();
 
-        // Retrieve the token from localStorage
         const token = localStorage.getItem('authToken');
         if (!token) {
             otpError.textContent = 'No token found in localStorage. Please log in first.';
             return;
         }
-
-        // Call the function to send OTP to the user's email
         await sendOTP();
     });
 
@@ -110,39 +107,53 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Handle verify button click
     verifyBtn.addEventListener('click', async () => {
         const otp = Array.from(otpInputs).map(input => input.value).join('');
+        const token = localStorage.getItem('authToken');
 
         try {
             const response = await fetch('http://localhost:3000/user/verify', {
-                method: 'POST', // Changed to POST for sending OTP
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({ otp })
             });
 
-            if (!response.ok) {
-                throw new Error('Invalid OTP');
+            if (response.status === 200) {
+                // Clear any previous error
+                otpError.textContent = '';
+                
+                // Show success message
+                alert('OTP verified successfully!');
+
+                // Close the modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('forgotPasswordModal'));
+                if (modal) {
+                    modal.hide();
+                }
+
+                // Reset form and timer
+                otpInputs.forEach(input => {
+                    input.value = '';
+                });
+                clearInterval(timerId);
+
+                // Redirect to reset password page
+                window.location.href = 'reset-password.html';
+            } else {
+                const data = await response.json();
+                otpError.textContent = data.message || 'Invalid OTP. Please try again.';
+                otpInputs.forEach(input => {
+                    input.value = '';
+                });
             }
-
-            // OTP verified successfully
-            otpError.textContent = '';
-            alert('OTP verified successfully!');
-
-            // Close the modal
-            const modal = bootstrap.Modal.getInstance(document.getElementById('forgotPasswordModal'));
-            modal.hide();
-
-            // Reset the form
+        } catch (error) {
+            otpError.textContent = 'Error occurred while verifying OTP. Please try again.';
             otpInputs.forEach(input => {
                 input.value = '';
             });
-            clearInterval(timerId);
-
-        } catch (error) {
-            otpError.textContent = 'Invalid OTP. Please try again.';
         }
     });
 });

@@ -83,31 +83,32 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to handle API login
     async function loginApi(email, password) {
         try {
+            const token = localStorage.getItem('authToken');
             const response = await fetch('http://localhost:3000/user/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify({email, password})
+                body: JSON.stringify({ email, password })
             });
-            
+
             if (response.ok) {
                 const data = await response.json();
+                if (data.token) {
+                    localStorage.setItem('authToken', data.token);
+                }
                 console.log('Login successful:', data);
-                alert('Login successfull')
-                localStorage.setItem("token", data.token);
+                alert('Login successful');
                 window.location.href = "index.html";
-            } 
-            // if(response.ok){
-            //     window.location.href = 'loginsite.html'; 
-            // }
-                else {
+            } else {
                 const error = await response.json();
                 console.error('Login failed:', error);
-            }       
+                alert(error.message || 'Login failed');
+            }
         } catch (error) {
-            console.error('Error during signup:', error);
-            alert('An error occurred during signup. Please try again later.');
+            console.error('Error during login:', error);
+            alert('An error occurred during login. Please try again later.');
         }
     }
 
@@ -129,3 +130,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial validation
     validateInputs();
 });
+

@@ -1,49 +1,51 @@
-  document.addEventListener('DOMContentLoaded', function () {
-    // Handling heart icon click
-    const heartBadge = document.getElementById('heartBadge');
-    const heartIcons = document.querySelectorAll('#cardHeartIcon');
-    let likedCount = 0;
-    let wishlistItems = []; // Array to store liked items
+document.addEventListener('DOMContentLoaded', function () {
+  // Handling heart icon click
+  const heartBadge = document.getElementById('heartBadge');
+  const heartIcons = document.querySelectorAll('#cardHeartIcon');
+  let likedCount = 0;
+  let wishlistItems = []; // Array to store liked items
 
-    heartIcons.forEach((heartIcon) => {
-      heartIcon.addEventListener('click', () => {
-        const productCard = heartIcon.closest('.card-body');
-        const productName = productCard.querySelector('.cardheading a').textContent.trim();
-        const productPriceText = productCard.querySelector('.text-dark').textContent.trim();
-        const productImage = productCard.querySelector('img').src;
+  heartIcons.forEach((heartIcon) => {
+    heartIcon.addEventListener('click', () => {
+      const productCard = heartIcon.closest('.card-body');
+      
+      // Ensure that the productCard exists
+      const productNameElement = productCard?.querySelector('.cardheading a');
+      const productName = productNameElement ? productNameElement.textContent.trim() : 'Unknown Product';
+      
+      const productPriceText = productCard.querySelector('.text-dark').textContent.trim();
+      const productImage = productCard.querySelector('img').src;
 
-        const price = parseFloat(productPriceText.replace('$', '').replace(',', '').trim());
+      const price = parseFloat(productPriceText.replace('$', '').replace(',', '').trim());
 
-        // Check if the product is already in the wishlist
-        const existingProductIndex = wishlistItems.findIndex((item) => item.name === productName);
+      // Check if the product is already in the wishlist
+      const existingProductIndex = wishlistItems.findIndex((item) => item.name === productName);
 
-        if (!heartIcon.classList.contains('liked')) {
-          heartIcon.classList.add('liked');
-          likedCount++;
+      if (!heartIcon.classList.contains('liked')) {
+        heartIcon.classList.add('liked');
+        likedCount++;
 
-          if (existingProductIndex === -1) {
-            wishlistItems.push({ name: productName, price, image: productImage });
-          }
-        } else {
-          heartIcon.classList.remove('liked');
-          likedCount--;
-
-          if (existingProductIndex > -1) {
-            wishlistItems.splice(existingProductIndex, 1);
-          }
+        if (existingProductIndex === -1) {
+          wishlistItems.push({ name: productName, price, image: productImage });
         }
+      } else {
+        heartIcon.classList.remove('liked');
+        likedCount--;
 
-        heartBadge.textContent = likedCount;
-        heartBadge.style.display = likedCount > 0 ? 'inline' : 'none';
+        if (existingProductIndex > -1) {
+          wishlistItems.splice(existingProductIndex, 1);
+        }
+      }
 
-        updateWishlistModal(); // Update the wishlist modal each time a heart icon is clicked
-      });
+      heartBadge.textContent = likedCount;
+      heartBadge.style.display = likedCount > 0 ? 'inline' : 'none';
+
+      updateWishlistModal(); 
     });
+  });
 
-    // Initially hide heart badge if no items are liked
-    heartBadge.style.display = 'none';
+  heartBadge.style.display = 'none';
 
-   // Function to update wishlist modal
   function updateWishlistModal() {
     const wishlistBody = document.querySelector('.wishlist-modal-body');
     wishlistBody.innerHTML = ''; // Clear current wishlist items
@@ -82,151 +84,187 @@
         wishlistBody.insertAdjacentHTML('beforeend', productHTML);
       });
     }
-      // Add event listeners for remove and add to cart buttons
-      const removeButtons = wishlistBody.querySelectorAll('.remove-from-wishlist');
-      removeButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-          const index = button.dataset.index;
-          wishlistItems.splice(index, 1); // Remove the item from the wishlist
-          updateWishlistModal(); // Update the modal
-        });
-      });
 
-      const addToCartButtons = wishlistBody.querySelectorAll('.add-to-cart');
-      addToCartButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-          const index = button.dataset.index;
-          const item = wishlistItems[index];
-          addItemToCart(item); // Add the item to the cart
-        });
-      });
-    }
-
-    // Add item to cart
-    const cartBadge = document.getElementById('cart-badge');
-    const addToCartButtons = document.querySelectorAll('.btn-success');
-    let cartItems = [];
-
-    addToCartButtons.forEach((button) => {
-      button.addEventListener('click', (event) => {
-        event.preventDefault();
-        const productCard = button.closest('.card-body');
-        const productName = productCard.querySelector('.cardheading a').textContent.trim();
-        const productPriceText = productCard.querySelector('.text-dark').textContent.trim();
-        const productImage = productCard.querySelector('img').src;
-
-        const price = parseFloat(productPriceText.replace('$', '').replace(',', '').trim());
-
-        const existingProductIndex = cartItems.findIndex((item) => item.name === productName);
-        if (existingProductIndex > -1) {
-          cartItems[existingProductIndex].quantity++;
-        } else {
-          const product = { name: productName, price, quantity: 1, image: productImage };
-          cartItems.push(product);
-        }
-
-        cartBadge.textContent = cartItems.length;
-        updateCartDisplay();
+    // Add event listeners for remove and add to cart buttons
+    const removeButtons = wishlistBody.querySelectorAll('.remove-from-wishlist');
+    removeButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const index = button.dataset.index;
+        wishlistItems.splice(index, 1); // Remove the item from the wishlist
+        updateWishlistModal(); // Update the modal
       });
     });
 
-    function updateCartDisplay() {
-      const offcanvasBody = document.querySelector('.offcanvas-body');
-      offcanvasBody.innerHTML = '';
+    const addToCartButtons = wishlistBody.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const index = button.dataset.index;
+        const item = wishlistItems[index];
+        addItemToCart(item); // Add the item to the cart
+      });
+    });
+  }
 
-      if (cartItems.length === 0) {
-        offcanvasBody.innerHTML = `<p class="text-danger text-center">Your shopping cart is empty!</p>`;
-      } else {
-        let grandTotal = 0;
+  // Add item to cart
+  const cartBadge = document.getElementById('cart-badge');
+  const addToCartButtons = document.querySelectorAll('.btn-success');
+  let cartItems = [];
 
-        cartItems.forEach((item, index) => {
-          const totalPrice = item.price * item.quantity;
-          grandTotal += totalPrice;
-
-          const productHTML = `
-            <div class="d-flex justify-content-between align-items-center cart-item">
-              <img src="${item.image}" alt="${item.name}" class="cart-item-image" style="width: 100px; object-fit: cover; margin-right: 10px;">
-              <div class="d-flex flex-column">
-                <p>${item.name}</p>
-                <p class="price text-center" data-price="${item.price}">$${item.price.toFixed(2)}</p>
-                <div class="text-center">
-                  <button class="btn btn-sm btn-outline-secondary decrease-quantity" data-index="${index}">-</button>
-                  <span class="quantity">${item.quantity}</span>
-                  <button class="btn btn-sm btn-outline-secondary increase-quantity" data-index="${index}">+</button>
-                </div>
-                <p class="text-center">Total: $${totalPrice.toFixed(2)}</p>
-              </div>
-              <button class="btn btn-sm btn-danger remove-item" data-index="${index}">Remove</button>
-            </div>
-          `;
-          offcanvasBody.insertAdjacentHTML('beforeend', productHTML);
-        });
-
-        offcanvasBody.insertAdjacentHTML(
-          'beforeend',
-          `<div class="mt-auto text-end">Grand Total: <strong class="text-success">$${grandTotal.toFixed(2)}</strong></div>`
-        );
-
-        const removeButtons = offcanvasBody.querySelectorAll('.remove-item');
-        removeButtons.forEach((button) => {
-          button.addEventListener('click', () => {
-            const index = button.dataset.index;
-            cartItems.splice(index, 1);
-            updateCartDisplay();
-            cartBadge.textContent = cartItems.length;
-          });
-        });
-
-        const increaseButtons = offcanvasBody.querySelectorAll('.increase-quantity');
-        const decreaseButtons = offcanvasBody.querySelectorAll('.decrease-quantity');
-
-        increaseButtons.forEach((button) => {
-          button.addEventListener('click', () => {
-            const index = button.dataset.index;
-            increaseQuantity(index);
-            updateCartDisplay();
-          });
-        });
-
-        decreaseButtons.forEach((button) => {
-          button.addEventListener('click', () => {
-            const index = button.dataset.index;
-            decreaseQuantity(index);
-            updateCartDisplay();
-          });
-        });
+  addToCartButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      
+      // Check if button is inside wishlist modal
+      const isWishlistButton = button.classList.contains('add-to-cart');
+      if (isWishlistButton) {
+        // Get item directly from wishlistItems array using button's data-index
+        const index = button.dataset.index;
+        const item = wishlistItems[index];
+        if (item) {
+          addItemToCart(item);
+        }
+        return;
       }
-    }
 
-    function increaseQuantity(index) {
-      cartItems[index].quantity++;
-    }
-
-    function decreaseQuantity(index) {
-      if (cartItems[index].quantity > 1) {
-        cartItems[index].quantity--;
+      // Regular product card handling
+      const productCard = button.closest('.card-body');
+      if (!productCard) {
+        // console.warn('Product card not found');
+        return;
       }
-    }
 
-    // Add item to the cart directly from wishlist
-    function addItemToCart(item) {
-      const existingProductIndex = cartItems.findIndex((cartItem) => cartItem.name === item.name);
+      const productNameElement = productCard.querySelector('.cardheading a');
+      if (!productNameElement) {
+        console.warn('Product name element not found');
+        return;
+      }
+      const productName = productNameElement.textContent.trim();
+
+      const priceElement = productCard.querySelector('.text-dark');
+      if (!priceElement) {
+        console.warn('Price element not found');
+        return;
+      }
+      const productPriceText = priceElement.textContent.trim();
+
+      const imageElement = productCard.querySelector('img');
+      if (!imageElement) {
+        console.warn('Image element not found');
+        return;
+      }
+      const productImage = imageElement.src;
+
+      const price = parseFloat(productPriceText.replace('$', '').replace(',', '').trim());
+
+      const existingProductIndex = cartItems.findIndex((item) => item.name === productName);
       if (existingProductIndex > -1) {
         cartItems[existingProductIndex].quantity++;
       } else {
-        cartItems.push({ ...item, quantity: 1 });
+        const product = { name: productName, price, quantity: 1, image: productImage };
+        cartItems.push(product);
       }
 
       cartBadge.textContent = cartItems.length;
       updateCartDisplay();
-    }
-
-    updateCartDisplay();
+    });
   });
 
+  function updateCartDisplay() {
+    const offcanvasBody = document.querySelector('.offcanvas-body');
+    offcanvasBody.innerHTML = '';
 
-  // for timer days
-  const targetDate = new Date();
+    if (cartItems.length === 0) {
+      offcanvasBody.innerHTML = `<p class="text-danger text-center">Your shopping cart is empty!</p>`;
+    } else {
+      let grandTotal = 0;
+
+      cartItems.forEach((item, index) => {
+        const totalPrice = item.price * item.quantity;
+        grandTotal += totalPrice;
+
+        const productHTML = `
+          <div class="d-flex justify-content-between align-items-center cart-item">
+            <img src="${item.image}" alt="${item.name}" class="cart-item-image" style="width: 100px; object-fit: cover; margin-right: 10px;">
+            <div class="d-flex flex-column">
+              <p>${item.name}</p>
+              <p class="price text-center" data-price="${item.price}">$${item.price.toFixed(2)}</p>
+              <div class="text-center">
+                <button class="btn btn-sm btn-outline-secondary decrease-quantity" data-index="${index}">-</button>
+                <span class="quantity">${item.quantity}</span>
+                <button class="btn btn-sm btn-outline-secondary increase-quantity" data-index="${index}">+</button>
+              </div>
+            </div>
+            <button class="btn btn-sm btn-danger remove-item" data-index="${index}">Remove</button>
+          </div>
+        `;
+        offcanvasBody.insertAdjacentHTML('beforeend', productHTML);
+      });
+
+      offcanvasBody.insertAdjacentHTML(
+        'beforeend',
+        `<div class="mt-auto text-end">Grand Total: <strong class="text-success">$${grandTotal.toFixed(2)}</strong></div>`
+      );
+
+      const removeButtons = offcanvasBody.querySelectorAll('.remove-item');
+      removeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const index = button.dataset.index;
+          cartItems.splice(index, 1);
+          updateCartDisplay();
+          cartBadge.textContent = cartItems.length;
+        });
+      });
+
+      const increaseButtons = offcanvasBody.querySelectorAll('.increase-quantity');
+      const decreaseButtons = offcanvasBody.querySelectorAll('.decrease-quantity');
+
+      increaseButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const index = button.dataset.index;
+          increaseQuantity(index);
+          updateCartDisplay();
+        });
+      });
+
+      decreaseButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const index = button.dataset.index;
+          decreaseQuantity(index);
+          updateCartDisplay();
+        });
+      });
+    }
+  }
+
+  function increaseQuantity(index) {
+    cartItems[index].quantity++;
+  }
+
+  function decreaseQuantity(index) {
+    if (cartItems[index].quantity > 1) {
+      cartItems[index].quantity--;
+    }
+  }
+
+  // Add item to the cart directly from wishlist
+  function addItemToCart(item) {
+    const existingProductIndex = cartItems.findIndex((cartItem) => cartItem.name === item.name);
+    if (existingProductIndex > -1) {
+      cartItems[existingProductIndex].quantity++;
+    } else {
+      cartItems.push({ ...item, quantity: 1 });
+    }
+
+    cartBadge.textContent = cartItems.length;
+    updateCartDisplay();
+  }
+
+  updateCartDisplay();
+});
+
+
+// for timer days
+const targetDate = new Date();
 targetDate.setDate(targetDate.getDate() + 1360);
 
 function updateCountdown() {
@@ -241,17 +279,14 @@ function updateCountdown() {
       timer.querySelector('.minutes').textContent = "0";
       timer.querySelector('.seconds').textContent = "0";
     });
-    clearInterval(timerInterval); // Stop the timer
     return;
   }
 
-  // Calculate the remaining time
   const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
   const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-  // Update all timers with the same countdown values
   document.querySelectorAll('.timer').forEach(timer => {
     timer.querySelector('.days').textContent = days;
     timer.querySelector('.hours').textContent = hours;
@@ -260,8 +295,5 @@ function updateCountdown() {
   });
 }
 
-// Update the countdown every second
-const timerInterval = setInterval(updateCountdown, 1000);
-
-// Initialize the countdown on page load
+setInterval(updateCountdown, 1000);
 updateCountdown();

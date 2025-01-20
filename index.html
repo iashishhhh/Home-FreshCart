@@ -22,10 +22,27 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Fresh Cart</title>
 
+    <style>
+        .otp-input.is-invalid {
+            border-color: #dc3545;
+            background-image: none;
+        }
+
+        .otp-input:focus {
+            border-color: #198754;
+            box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+        }
+
+        .otp-input.is-invalid:focus {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+        }
+    </style>
+
 </head>
 
 <body>
-    <!-- //site Loader -->  
+    <!-- //site Loader -->
     <div class="freshcart-loader m-0 p-0">
         <div class="cart">
             <div class="cart-body"></div>
@@ -153,33 +170,70 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <button class="ps-4 pe-4 py-2 rounded border-0 bg-transparent dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="  py-2 rounded border-0 bg-transparent ps-lg-2" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 <i class="fa-solid fa-right-from-bracket"></i>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="loginsite.html" id="logoutBtn">
-                                    <i class="fa-solid fa-right-from-bracket me-2"></i>Logout
-                                </a></li>
-                                <li><a class="dropdown-item" href="signup.html" data-bs-toggle="modal" data-bs-target="#userModal">
-                                    <i class="fa-solid fa-user-plus me-2"></i>Signup
-                                </a></li>
+                                        <i class="fa-solid fa-right-from-bracket me-2"></i>Logout
+                                    </a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                        data-bs-target="#forgotPasswordModal">
+                                        <i class="fa-solid fa-user-plus me-2"></i>Forget Password
+                                    </a></li>
                             </ul>
                         </li>
                     </ul>
+                    <!-- Add the Forgot Password Modal -->
+                    <div class="modal fade" id="forgotPasswordModal" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div id="otpStep">
+                                        <div class="mb-3">
+                                            <label class="form-label">Enter OTP</label>
+                                            <div class="d-flex gap-2 justify-content-center">
+                                                <input type="text" class="form-control text-center otp-input"
+                                                    maxlength="1" />
+                                                <input type="text" class="form-control text-center otp-input"
+                                                    maxlength="1" />
+                                                <input type="text" class="form-control text-center otp-input"
+                                                    maxlength="1" />
+                                                <input type="text" class="form-control text-center otp-input"
+                                                    maxlength="1" />
+                                                <input type="text" class="form-control text-center otp-input"
+                                                    maxlength="1" />
+                                                <input type="text" class="form-control text-center otp-input"
+                                                    maxlength="1" />
+                                            </div>
+                                            <div class="text-center mt-3">
+                                                <span id="otpTimer" class="text-muted">Time remaining: 02:00</span>
+                                            </div>
+                                            <div class="error-message text-danger" id="otpError"></div>
+                                        </div>
+                                        <button class="btn btn-success" id="verifyBtn">Verify OTP</button>
+                                        <button class="btn btn-link" id="resendBtn" disabled>Resend OTP</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-        <!-- Offcanvas -->
-        <div class="offcanvas offcanvas-end " style=" max-width: 100%;" tabindex="-1" id="offcanvasExample"
-            aria-labelledby="offcanvasExampleLabel">
-            <div class="offcanvas-header">
-                <h5 id="offcanvasExampleLabel">Shopping Cart</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <p>Your shopping cart is empty!</p>
-            </div>
+    </div>
+    </nav>
+    <!-- Offcanvas -->
+    <div class="offcanvas offcanvas-end " style=" max-width: 100%;" tabindex="-1" id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasExampleLabel">Shopping Cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
+        <div class="offcanvas-body">
+            <p>Your shopping cart is empty!</p>
+        </div>
+    </div>
     </div>
     <!--  -->
     <section class="border-bottom ">
@@ -1501,7 +1555,8 @@
                                     </a>
                                 </div>
                                 <div class=" nav-item">
-                                    <a href="#" role="button" class="nav-link text-black text-muted" tabindex="0">FAQ</a>
+                                    <a href="#" role="button" class="nav-link text-black text-muted"
+                                        tabindex="0">FAQ</a>
                                 </div>
                                 <div class=" nav-item">
                                     <a href="#" role="button" class="nav-link text-black text-muted" tabindex="0">New
@@ -1605,9 +1660,10 @@
         <button class="fixed-btn ps-3 pe-3 pt-2 pb-2 rounded"> <i class="fa-solid fa-cart-shopping"></i>
             Book Now</button>
     </div>
-
     <script src="js/script.js"></script>
     <script src="js/slick-slider.js"></script>
+    <script src="js/route.js"></script>
+
 </body>
 
 </html>

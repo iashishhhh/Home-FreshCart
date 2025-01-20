@@ -10,7 +10,9 @@
   font-style: normal;
 }
 
-.form-input, .custom-box, .card .i {
+.form-input,
+.custom-box,
+.card .i {
   border-radius: 5px;
   border: 1px solid black;
 }
@@ -59,6 +61,20 @@ p i {
   align-items: center;
   margin: 20px 0;
 }
+
+.navbar-toggler {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar-toggler:hover,
+.navbar-toggler:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
 
 .slick-slide {
   display: none;
@@ -118,7 +134,6 @@ p i {
 
 
 
-/* Responsive CSS */
 
 /* Cart Item Layout */
 .cart-item {
@@ -127,6 +142,7 @@ p i {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 5rem;
+
 
   p {
     font-size: 14px;
@@ -151,6 +167,7 @@ p i {
 
   .cart-item {
     margin-bottom: 1rem;
+    padding-bottom: 1rem;
   }
 
   .text-end {
@@ -293,9 +310,6 @@ p i {
   padding: 0;
 }
 
-.nav-item {
-  padding: 0.5rem 0xp;
-}
 
 .dropdown-hover:hover>.dropdown-menu {
   display: inline-block;
@@ -647,7 +661,8 @@ input {
 
   font-weight: bold;
 }
-.bg span{
+
+.bg span {
   color: black;
 }
 
@@ -659,8 +674,13 @@ input {
 }
 
 /* Apply these consistently */
-.content h3 { font-size: var(--font-size-large); }
-.content p { font-size: var(--font-size-base); }
+.content h3 {
+  font-size: var(--font-size-large);
+}
+
+.content p {
+  font-size: var(--font-size-base);
+}
 
 :root {
   --primary-color: green;
@@ -673,6 +693,7 @@ input {
 .icon i {
   color: var(--primary-color);
 }
+
 .mega-menu {
   border-radius: 0;
   margin-top: 0;

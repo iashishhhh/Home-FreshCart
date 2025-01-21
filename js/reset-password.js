@@ -38,20 +38,66 @@ function validateForm(event) {
     return false;
 }
 
-// Add new code for handling button state
 function updateButtonState() {
     const newPassword = document.getElementById('newPassword').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
-    const submitButton = document.getElementById('submitButton'); // Make sure your button has this ID
+    const submitButton = document.getElementById('submitButton'); 
 
-    // Enable button only if both fields have values
     submitButton.disabled = !newPassword || !confirmPassword;
 }
 
-// Add event listeners when document loads
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('newPassword').addEventListener('input', updateButtonState);
     document.getElementById('confirmPassword').addEventListener('input', updateButtonState);
     // Initialize button state
     updateButtonState();
 }); 
+
+document.addEventListener('DOMContentLoaded', function () {
+    const resetpasswordForm = document.getElementById('resetPasswordForm');
+    const newpasswordInput = document.getElementById('newPassword');
+    const confirmpasswordInput = document.getElementById('confirmPassword');
+    const resetError = document.getElementById('resetError');
+
+    resetpasswordForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const newpassword = newpasswordInput.value.trim();
+        const confirmpassword = confirmpasswordInput.value.trim();
+
+        // Validate passwords
+        if (newpassword !== confirmpassword) {
+            resetError.textContent = 'Passwords do not match. Please try again.';
+            return;
+        }
+
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+            resetError.textContent = 'No token found. Please log in again.';
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost:3000/user/updatepassword', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({ newpassword,confirmpassword }),
+            });
+
+            if (response.status === 200) {
+                resetError.textContent = '';
+                alert('Password reset successful!');
+                window.location.href = 'login.html';  // Redirect to login page after reset
+            } else {
+                const data = await response.json();
+                resetError.textContent = data.message || 'Failed to reset password. Please try again.';
+            }
+        } catch (error) {
+            resetError.textContent = 'Error occurred while resetting password. Please try again.';
+            console.error(error);
+        }
+    });
+});

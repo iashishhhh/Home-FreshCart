@@ -97,3 +97,18 @@ async function validateSignupForm(event) {
 }
 
 document.getElementById('signupForm').addEventListener('submit', validateSignupForm);
+
+//password hide and show
+
+document.getElementById('togglePassword').addEventListener('click', function () {
+    const passwordField = document.getElementById('password');
+    const toggleButton = this;
+
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        toggleButton.textContent = '🙈';
+    } else {
+        passwordField.type = 'password';
+        toggleButton.textContent = '👁️';
+    }
+});

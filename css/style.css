@@ -132,7 +132,20 @@ p i {
   }
 }
 
+.otp-input.is-invalid {
+  border-color: #dc3545;
+  background-image: none;
+}
 
+.otp-input:focus {
+  border-color: #198754;
+  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+}
+
+.otp-input.is-invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
 
 
 /* Cart Item Layout */
@@ -665,53 +678,21 @@ input {
 .bg span {
   color: black;
 }
-
-/* Use CSS variables for consistent font sizes */
-:root {
-  --font-size-base: 14px;
-  --font-size-large: 18px;
-  --font-size-xl: 24px;
+/* 
+body {
+  background-color: white;
+  color: black;
 }
 
-/* Apply these consistently */
-.content h3 {
-  font-size: var(--font-size-large);
+.dark-mode {
+  background-color: black;
+  color: white;
 }
-
-.content p {
-  font-size: var(--font-size-base);
-}
-
-:root {
-  --primary-color: green;
-  --shadow: 4px 0 3px rgba(0, 0, 0, 0.1);
-  --border-color: #ddd;
-  --font-size-small: 14px;
-}
-
-/* Then use these variables throughout the code */
-.icon i {
-  color: var(--primary-color);
-}
-
-.mega-menu {
-  border-radius: 0;
-  margin-top: 0;
-  border-top: 1px solid #dee2e6;
-}
-
-.dropdown-item {
-  padding: 0.5rem 1rem;
-  color: #6c757d;
-}
-
-.dropdown-item:hover {
-  background-color: #f8f9fa;
-  color: #198754;
-}
-
-.dropdown-header {
-  font-weight: 600;
-  color: #212529;
-  padding: 0.5rem 1rem;
-}
+.dark-btn i {
+  padding-right: 12px;
+  padding-left: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border: 1px solid black;
+  border-radius: 10px;
+} */

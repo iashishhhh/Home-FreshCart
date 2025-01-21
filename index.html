@@ -22,26 +22,10 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Fresh Cart</title>
 
-    <style>
-        .otp-input.is-invalid {
-            border-color: #dc3545;
-            background-image: none;
-        }
-
-        .otp-input:focus {
-            border-color: #198754;
-            box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
-        }
-
-        .otp-input.is-invalid:focus {
-            border-color: #dc3545;
-            box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
-        }
-    </style>
-
 </head>
 
 <body>
+
     <!-- //site Loader -->
     <div class="freshcart-loader m-0 p-0">
         <div class="cart">
@@ -51,8 +35,8 @@
         </div>
         <div class="cart-text">Loading Fresh Cart...</div>
     </div>
-
     <!-- //loader end -->
+
     <div class="container-fluid ">
         <nav class="navbar navbar-expand-lg bg-white border-0">
             <div class="container ">
@@ -104,9 +88,7 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- wishlist Modal End  -->
-
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#userModal">
                                 <i class="fa-regular fa-user"></i>
@@ -114,13 +96,13 @@
                         </li>
 
                         <!-- Modal -->
-                        <div class="modal fade mx-auto" id="userModal" tabindex="-1" aria-labelledby="userModalLabel"
+                        <!-- <div class="modal fade mx-auto" id="userModal" tabindex="-1" aria-labelledby="userModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog w-100 mx-auto">
                                 <div class="modal-content" id="modalcontent">
                                     <div class="modal-header border-0 pb-4">
                                         <h5 class="modal-title fw-bold " id="userModalLabel">Sign Up</h5>
-                                        <button type="button" class="btn-close border-0" data-bs-dismiss="modal"
+                                        <button type="b00000utton" class="btn-close border-0" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
 
@@ -160,7 +142,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <li class="nav-item position-relative">
                             <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                                 aria-controls="offcanvasExample">
@@ -448,28 +430,28 @@
         </div>
     </section>
 
-    <div class="container">
+    <div class="container rounded">
         <div class="slider-navigation gap-2 ">
             <h3 class="me-auto">Featured Categories</h3>
             <button class="slick-prev custom-prev rounded-circle">❮</button>
             <button class="slick-next custom-next rounded-circle">❯</button>
         </div>
-        <div class="custom-slider">
-            <div class="custom-box">
+        <div class="custom-slider rounded">
+            <div class="custom-box rounded">
                 <div class="text-center card-body py-4">
-                    <img src="img/category-bakery-biscuits.jpg" alt="" class="mb-3 mx-auto img-fluid">
+                    <img src="img/category-bakery-biscuits.jpg" alt="" class="mb-3 mx-auto img-fluid rounded">
                     <p>Bakery &amp; Biscuits</p>
                 </div>
             </div>
             <div class="custom-box">
                 <div class="text-center card-body py-4">
-                    <img src="img/category-atta-rice-dal.jpg" alt="" class="mb-3 mx-auto img-fluid">
+                    <img src="img/category-atta-rice-dal.jpg" alt="" class="mb-3 mx-auto img-fluid rounded">
                     <p>Aata, Rice &amp; Dal</p>
                 </div>
             </div>
             <div class="custom-box">
                 <div class="text-center card-body py-4">
-                    <img src="img/category-instant-food.jpg" alt="" class="mb-3 mx-auto img-fluid">
+                    <img src="img/category-instant-food.jpg" alt="" class="mb-3 mx-auto img-fluid rounded">
                     <p>Instant Food</p>
                 </div>
             </div>
@@ -1657,13 +1639,24 @@
     </section>
 
     <div class="fixed-btn-container">
+
+        <!-- <div class="dark-btn d-flex justify-content-center pb-3">
+            <i class="fa-solid fa-circle-half-stroke " onclick="myFunction()"></i>
+        </div> -->
         <button class="fixed-btn ps-3 pe-3 pt-2 pb-2 rounded"> <i class="fa-solid fa-cart-shopping"></i>
             Book Now</button>
+
     </div>
     <script src="js/script.js"></script>
     <script src="js/slick-slider.js"></script>
     <script src="js/route.js"></script>
 
+    <!-- <script>
+        function myFunction() {
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+        }
+    </script> -->
 </body>
 
 </html>

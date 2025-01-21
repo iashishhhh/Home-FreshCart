@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const loginForm = document.querySelector('form');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
@@ -8,19 +8,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to show error
     function showError(input, message) {
         const formControl = input.parentElement;
-        // Remove existing error message if any
         const existingError = formControl.querySelector('.error-message');
         if (existingError) {
             existingError.remove();
         }
 
-        // Create and add new error message
         const errorDiv = document.createElement('div');
         errorDiv.className = 'error-message text-danger mt-1';
         errorDiv.innerText = message;
         formControl.appendChild(errorDiv);
 
-        // Add error class to input
         input.classList.add('is-invalid');
         input.style.borderColor = 'red';
     }
@@ -36,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
         input.style.borderColor = '';
     }
 
-    // Function to validate email format
     function isValidEmail(email) {
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailPattern.test(email);
@@ -75,12 +71,9 @@ document.addEventListener('DOMContentLoaded', function() {
             removeError(checkboxInput);
         }
 
-        // Enable/disable login button based on validation
-        loginButton.disabled = !isValid;
         return isValid;
     }
 
-    // Function to handle API login
     async function loginApi(email, password) {
         try {
             const token = localStorage.getItem('authToken');
@@ -88,9 +81,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`,
                 },
-                body: JSON.stringify({ email, password })
+                body: JSON.stringify({ email, password }),
             });
 
             if (response.ok) {
@@ -100,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 console.log('Login successful:', data);
                 alert('Login successful');
-                window.location.href = "index.html";
+                window.location.href = 'index.html';
             } else {
                 const error = await response.json();
                 console.error('Login failed:', error);
@@ -112,22 +105,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    loginForm.addEventListener('submit', function(e) {
+    loginForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        if (validateInputs()) {
+            if (validateInputs()) {
             const email = emailInput.value.trim();
             const password = passwordInput.value.trim();
             loginApi(email, password);
+        } else {
+            // Focus on the first invalid input
+            const firstInvalid = loginForm.querySelector('.is-invalid');
+            if (firstInvalid) {
+                firstInvalid.focus();
+            }
         }
     });
-
-    // Validate on input
-    emailInput.addEventListener('input', validateInputs);
-    passwordInput.addEventListener('input', validateInputs);
-    checkboxInput.addEventListener('change', validateInputs);
-
-    // Initial validation
-    validateInputs();
 });
-

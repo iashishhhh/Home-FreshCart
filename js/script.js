@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="col">
                   <div class="d-flex justify-content-end gap-3 w-100">
                     <button class="btn btn-sm add-to-cart py-2 px-3 text-white bg-success" data-index="${index}">Add to Cart</button>
-                    <button class="btn btn-sm remove-from-wishlist py-2 px-3 text-white bg-danger" data-index="${index}">Remove</button>
+                    <button class="btn btn-sm remove-from-wishlist py-2 px-3 text-white bg-danger" data-index="${index}"><i class="fa-solid fa-trash"></i></button>
                   </div>
                 </div>
               </div>
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Add event listeners for remove and add to cart buttons
-    const removeButtons = wishlistBody.querySelectorAll('.remove-from-wishlist');
+    const removeButtons = wishlistBody.querySelectorAll('.remove-from-wishlist');   
     removeButtons.forEach((button) => {
       button.addEventListener('click', () => {
         const index = button.dataset.index;
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <button class="btn btn-sm btn-outline-secondary increase-quantity" data-index="${index}">+</button>
               </div>
             </div>
-            <button class="btn btn-sm btn-danger remove-item" data-index="${index}">Remove</button>
+            <button class="btn btn-sm btn-danger remove-item" data-index="${index}"><i class="fa-solid fa-trash"></i></button>
           </div>
         `;
         offcanvasBody.insertAdjacentHTML('beforeend', productHTML);
@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function () {
                               <button class="btn btn-sm btn-outline-secondary increase-quantity" data-index="${index}">+</button>
                           </div>
                       </div>
-                      <button class="btn btn-sm btn-danger remove-item" data-index="${index}">Remove</button>
+                      <button class="btn btn-sm btn-danger remove-item" data-index="${index}"><i class="fa-solid fa-trash"></i></button>
                   </div>`;
               offcanvasBody.insertAdjacentHTML('beforeend', productHTML);
           });
@@ -454,14 +454,16 @@ document.addEventListener('DOMContentLoaded', function () {
               // Check if the product already exists in the wishlist
               const existingProductIndex = wishlistItems.findIndex((item) => item.name === productName);
               if (existingProductIndex > -1) {
-                  alert('This product is already in your wishlist!');
-                  return;
+                  alert('Yeh product pehle se aapki wishlist mein hai!'); // Alert message
+                  return; // Exit the function if product is already in wishlist
               }
 
               // Add new product to wishlist
               const product = { name: productName, price, image: productImage };
               wishlistItems.push(product);
 
+              // Change the heart icon to indicate it's liked
+              icon.classList.add('liked'); // Add a class to change the icon
               // Update wishlist badge and modal
               heartBadge.textContent = wishlistItems.length;
               heartBadge.style.display = wishlistItems.length > 0 ? 'inline' : 'none';
@@ -481,12 +483,12 @@ document.addEventListener('DOMContentLoaded', function () {
           wishlistItems.forEach((item, index) => {
               const productHTML = `
                   <div class="d-flex justify-content-between align-items-center wishlist-item mb-3">
-                      <img src="${item.image}" alt="${item.name}" class="wishlist-item-image" style="width: 80px; height: 80px; object-fit: cover; margin-right: 10px;">
+                      <img src="${item.image}" alt="${item.name}" class="wishlist-item-image" style="width: 100px; height: 80px; object-fit: cover; margin-right: 10px;">
                       <div class="d-flex flex-column">
                           <p class="m-0 fw-bold">${item.name}</p>
                           <p class="m-0 text-primary">$${item.price.toFixed(2)}</p>
                       </div>
-                      <button class="btn btn-sm btn-danger remove-from-wishlist" data-index="${index}">Remove</button>
+                      <button class="btn btn-sm btn-danger remove-from-wishlist" data-index="${index}"><i class="fa-solid fa-trash"></i></button>
                   </div>`;
               wishlistModalBody.insertAdjacentHTML('beforeend', productHTML);
           });

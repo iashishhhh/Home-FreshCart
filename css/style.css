@@ -679,22 +679,3 @@ input {
 .bg span {
   color: black;
 }
-
-/* 
-body {
-  background-color: white;
-  color: black;
-}
-
-.dark-mode {
-  background-color: black;
-  color: white;
-}
-.dark-btn i {
-  padding-right: 12px;
-  padding-left: 12px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  border: 1px solid black;
-  border-radius: 10px;
-} */

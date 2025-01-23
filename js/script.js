@@ -297,3 +297,13 @@ function updateCountdown() {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
+
+
+//token expire 
+document.getElementById("logoutBtn").addEventListener("click", function (event) {
+  event.preventDefault();
+
+  localStorage.removeItem("authToken"); 
+
+  window.location.href = "loginsite.html";
+});

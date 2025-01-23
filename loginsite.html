@@ -19,7 +19,7 @@
     <section class="p-3 p-md-4 p-xl-5 login-container ">
         <div class="container ">
             <div class="row d-flex justify-content-center">
-                <div class="col-lg-10 shadow-lg rounded-5  bg-light">
+                <!-- <div class="col-lg-10 shadow-lg rounded-5  bg-light">
                     <div class="row">
                         <div class="col-12 col-md-6 bg-light  form-wrapper rounded-start-5 d-none d-md-block">
                             <div class="d-flex flex-column justify-content-between h-100 p-3 p-md-4 p-xl-5 ">
@@ -31,71 +31,76 @@
 
 
                             </div>
+                        </div> -->
+                <div class="col-lg-5 col-md-10 col-sm-12 rounded-5 shadow " id="loginform">
+                    <div class="p-3 p-md-4 p-lg -5">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-5">
+                                    <h3 class="text-uppercase fs-1"><a href=""><img src="img/freshcart-logo.svg"
+                                                width="40%" alt=""></a> </h3>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-12 col-md-6 rounded-5 " id="loginform">
-                            <div class="p-3 p-md-4 p-xl-5">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="mb-5">
-                                            <h3 class="text-uppercase fs-1"><a href=""><img src="img/freshcart-logo.svg"
-                                                        width="40%" alt=""></a> </h3>
+                        <form action="http://localhost:3000/user/login" id="loginForm">
+                            <div class="row gy-3 gy-md-4 overflow-hidden">
+                                <div class="col-12">
+                                    <label for="email" class="form-label fw-bold">Email <span
+                                            class="text-danger">*</span></label>
+                                    <input type="email" class="form rounded shadow py-2 px-2 w-100" name="email"
+                                        id="email" placeholder="Enter your Email">
+                                    <small class="text-danger" id="emailError"></small>
+                                </div>
+                                <div class="col-12">
+                                    <label for="password" class="form-label fw-bold">
+                                        Password <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="col-12 position-relative">
+                                        <input type="password" name="password" id="password"
+                                            class="form rounded shadow py-2 px-2 w-100"
+                                            placeholder="Enter your password">
+                                        <button type="button" id="togglePassword" style="cursor: pointer;">
+                                            👁️
+                                        </button>
+                                    </div>
+                                    <small class="text-danger" id="passwordError"></small>
+                                </div>
+                                <div class="col-12">
+                                    <div
+                                        class="d-flex flex-column flex-sm-row justify-content-between align-items-center">
+                                        <div class="form-check p-0">
+                                            <input type="checkbox" id="checkbox" name="checkbox">
+                                            <label class="form-check-label text-black ps-1" for="checkbox">Remember
+                                                me</label>
                                         </div>
+                                        <a href="forget-password.html"
+                                            class="text-end text-decoration-none mt-2 mt-sm-0">Forgot password?</a>
                                     </div>
                                 </div>
-                                <form action="http://localhost:3000/user/login" id="loginForm">
-                                    <div class="row gy-3 gy-md-4 overflow-hidden">
-                                        <div class="col-12">
-                                            <label for="email" class="form-label fw-bold">Email <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="email" class="form rounded shadow py-2 px-2 w-100" name="email"
-                                                id="email" placeholder="Enter your Email">
-                                            <small class="text-danger" id="emailError"></small>
-                                        </div>
-                                        <div class="col-12">
-                                            <label for="password" class="form-label fw-bold">
-                                                Password <span class="text-danger">*</span>
-                                            </label>
-                                            <div class="col-12 position-relative">
-                                                <input type="password" name="password" id="password"
-                                                    class="form rounded shadow py-2 px-2 w-100"
-                                                    placeholder="Enter your password">
-                                                <button type="button" id="togglePassword" style="cursor: pointer;">
-                                                    👁️
-                                                </button>
-                                            </div>
-                                            <small class="text-danger" id="passwordError"></small>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-check p-0">
-                                                <input type="checkbox" id="checkbox" name="checkbox">
-                                                <label class="form-check-label text-black" for="remember_me">Keep me
-                                                    logged in</label>
-                                            </div>
 
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="d-grid">
-                                                <button class="btn btn-success py-2" type="submit">Log in now</button>
-                                            </div>
-                                        </div>
+                                <div class="col-12">
+                                    <div class="d-grid">
+                                        <button class="btn btn-success py-2" type="submit">Log in now</button>
                                     </div>
-                                </form>
+                                </div>
+                            </div>
+                        </form>
 
-                                <div class="row">
-                                    <div class="col-12">
-                                        <hr class="mt-5 mb-4 border-secondary-subtle">
-                                        <div class="text-end">
-                                            <p class="m-0 p-0">Don't have an account? <a href="signup.html"
-                                                    class=" text-decoration-none fs-5">Signup</a></p>
+                        <div class="row">
+                            <div class="col-12">
+                                <hr class="mt-5 mb-4 border-secondary-subtle">
+                                <div class="text-end d-flex justify-content-end">
+                                    <p class="text-center text-muted">Don't have an account? <a href="signup.html"
+                                            class="fw-bold text-decoration-none">Signup</a></p>
 
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
         </div>
     </section>
     <script src="js/login.js"></script>

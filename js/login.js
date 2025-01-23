@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     localStorage.setItem('authToken', data.token);
                 }
                 console.log('Login successful:', data);
-                alert('Login successful');
+                // alert('Login successful');
                 window.location.href = 'index.html';
             } else {
                 const error = await response.json();

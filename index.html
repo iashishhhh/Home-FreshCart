@@ -24,7 +24,7 @@
 
 </head>
 
-<body class="m-0 p-0"> <!-- Added Bootstrap classes to remove margin and padding -->
+<body class="px-2">
 
     <!-- //site Loader -->
     <div class="freshcart-loader m-0 p-0">
@@ -37,8 +37,8 @@
     </div>
     <!-- //loader end -->
 
-    <div class="container-fluid p-0"> <!-- Changed padding to 0 -->
-        <nav class="navbar navbar-expand-lg bg-white border-0">
+    <div class="container-fluid pt-2 "> <!-- Added padding to ensure equal spacing -->
+        <nav class="navbar navbar-expand-lg  bg-white border-0">
             <div class="container"> <!-- Ensure this container has equal padding -->
                 <a class="navbar-brand" href="#"><img src="img/freshcart-logo.svg" class="w-100" alt="Logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -54,7 +54,7 @@
                         <button class="btn btn-outline-success ms-2" type="submit">Search</button>
                     </form>
                     <!-- Navbar Icons -->
-                    <ul class="navbar-nav mb-2 mt-2 gap-1 ">
+                    <ul class="navbar-nav mb-2 mt-2 gap-1 ms-auto">
                         <li class="nav-item position-relative">
                             <a class="nav-link" aria-current="page" href="#" data-bs-toggle="modal"
                                 data-bs-target="#heartModal">
@@ -94,55 +94,66 @@
                                 <i class="fa-regular fa-user"></i>
                             </a>
                         </li>
-
-                        <!-- Modal -->
-                        <!-- <div class="modal fade mx-auto" id="userModal" tabindex="-1" aria-labelledby="userModalLabel"
+                        <!-- User Profile Modal -->
+                        <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel"
                             aria-hidden="true">
-                            <div class="modal-dialog w-100 mx-auto">
-                                <div class="modal-content" id="modalcontent">
-                                    <div class="modal-header border-0 pb-4">
-                                        <h5 class="modal-title fw-bold " id="userModalLabel">Sign Up</h5>
-                                        <button type="b00000utton" class="btn-close border-0" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                            <div class="modal-dialog ">
+                                <div class="modal-content rounded-5">
+                                    <div class="modal-header ">
+                                        <h5 class="modal-title text-center  mx-auto " id="userModalLabel">User Profile
+                                        </h5>
                                     </div>
-
-                                    <div class="modal-body">
-                                        <form id="userLoginForm">
-                                            <div class="mb-3">
-                                                <label for="username" class="form-label">Name</label>
-                                                <input type="text" class="form w-100 rounded  ps-2 pe-2 py-2"
-                                                    id="username" placeholder="Enter Your Name" required>
-                                                <div class="error-message text-danger" id="usernameError"></div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="email" class="form-label">Email</label>
-                                                <input type="email" class="form w-100 rounded  ps-2 pe-2 py-2"
-                                                    id="email" placeholder="Enter Your Email" required>
-                                                <div class="error-message text-danger" id="emailError"></div>
-                                            </div>
-                                            <div class="">
-                                                <label for="password" class="form-label">Password</label>
-                                                <input type="password" class="form w-100 rounded  ps-2 pe-2 py-2"
-                                                    id="password" placeholder="Enter your password" required>
-                                                <div class="error-message text-danger" id="passwordError"></div>
-                                            </div>
-                                            <small class="form-text">By Signup, you agree to our<a href="#!"
-                                                    class="text-success fw-bold"> Terms of
-                                                    Service</a> &amp;<a href="#!" class="text-success fw-bold"> Privacy
-                                                    Policy</a></small>
-
-                                            <div class="pt-3">
-                                                <button type="submit" class="btn btn-success">Signup</button>
-                                            </div>
-                                            <div class="border-0 justify-content-center modal-footer pb-5 pt-4">Already
-                                                have an account?<a href="/signin" class="text-success fw-bold">Sign
-                                                    in</a></div>
-                                        </form>
-
+                                    <div class="modal-body text-center ">
+                                        <img src="img/app-store.png" alt="User Image"
+                                            class="img-fluid rounded-circle mb-3" style="width: 100px; height: 100px;">
+                                        <h5 id="userName">Ashish Chaudhary</h5>
+                                        <p id="userEmail">Ashish@gmail.com</p>
+                                        <div class="d-flex  justify-content-center border-top"> <a
+                                                class="nav-link text-primary" aria-current="page" href="#"
+                                                data-bs-toggle="modal" data-bs-target="#heartModal">
+                                                GO-TO Wishlist
+                                            </a>
+                                            <a class="nav-link text-primary" href="#" data-bs-toggle="offcanvas"
+                                                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                                                GO-TO Cart
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
+                        <!-- Add to Cart Modal -->
+                        <div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="addToCartModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="addToCartModalLabel">Item Added to Cart</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <p>Your item has been added to the cart successfully!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Wishlist Modal -->
+                        <div class="modal fade" id="wishlistModal" tabindex="-1" aria-labelledby="wishlistModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="wishlistModalLabel">Item Added to Wishlist</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <p>Your item has been added to your wishlist!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <li class="nav-item position-relative">
                             <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                                 aria-controls="offcanvasExample">
@@ -219,8 +230,8 @@
     </div>
     <!--  -->
     <section class="border-bottom">
-        <div class="container p-3"> <!-- Added padding to ensure equal spacing -->
-            <div class="d-none d-lg-flex ">
+        <div class="container pb-3">
+            <div class="d-lg-flex  ">
                 <ul class="navbar-nav flex-row">
                     <li class="nav-item dropdown">
                         <button class="dropdown-toggle Depart ps-4 pe-4 py-2 rounded border-0" data-bs-toggle="dropdown"
@@ -434,9 +445,10 @@
         <div class="slider-navigation gap-2 ">
             <h3 class="me-auto">Featured Categories</h3>
             <button class="slick-prev custom-prev rounded-circle "><span>
-                <i class="fa-solid fa-angle-left"></i>
-            </span></button>
-            <button class="slick-next custom-next rounded-circle"><span><i class="fa-solid fa-angle-right"></i></span></button>
+                    <i class="fa-solid fa-angle-left"></i>
+                </span></button>
+            <button class="slick-next custom-next rounded-circle"><span><i
+                        class="fa-solid fa-angle-right"></i></span></button>
         </div>
         <div class="custom-slider rounded">
             <div class="custom-box rounded">
@@ -552,7 +564,7 @@
                         <p class="text-dark mb-0 d-flex justify-contetn-between">
                             $11.7 <span class="text-decoration-line-through text-muted">$18</span>
                         </p>
-                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0 add-to-cart-btn">
                             <i class="fa-solid fa-plus pe-2"></i> Add
                         </a>
                     </div>
@@ -591,7 +603,7 @@
                         <p class="text-dark mb-0 d-flex justify-contetn-between">
                             $11.7 <span class="text-decoration-line-through text-muted">$18</span>
                         </p>
-                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0 add-to-cart-btn">
                             <i class="fa-solid fa-plus pe-2"></i> Add
                         </a>
                     </div>
@@ -628,7 +640,7 @@
                         <p class="text-dark mb-0 d-flex justify-contetn-between">
                             $11.7 <span class="text-decoration-line-through text-muted">$18</span>
                         </p>
-                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0 add-to-cart-btn">
                             <i class="fa-solid fa-plus pe-2"></i> Add
                         </a>
                     </div>
@@ -666,7 +678,7 @@
                         <p class="text-dark mb-0 d-flex justify-contetn-between">
                             $11.7 <span class="text-decoration-line-through text-muted">$18</span>
                         </p>
-                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0 add-to-cart-btn">
                             <i class="fa-solid fa-plus pe-2"></i> Add
                         </a>
                     </div>
@@ -710,7 +722,7 @@
                         <p class="text-dark mb-0 d-flex justify-contetn-between">
                             $11.7 <span class="text-decoration-line-through text-muted">$18</span>
                         </p>
-                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0 add-to-cart-btn">
                             <i class="fa-solid fa-plus pe-2"></i> Add
                         </a>
                     </div>
@@ -726,8 +738,8 @@
                                     class="custom-badge  badge bg-success">10%</span></div>
                         </div><img src="img/product-img-1.jpg" alt="Grocery Ecommerce Template"
                             class="mb-3 img-fluid"></a>
-                        <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                class="fa-regular fa-eye i"></i>
+                        <div class="card-product-action d-flex gap-1 justify-content-center">
+                            <i class="fa-regular fa-eye i"></i>
                             <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
                             <i class="fa-solid fa-arrow-right-arrow-left i"></i>
                         </div>
@@ -750,7 +762,7 @@
                         <p class="text-dark mb-0 d-flex justify-contetn-between">
                             $11.7 <span class="text-decoration-line-through text-muted">$18</span>
                         </p>
-                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0 add-to-cart-btn">
                             <i class="fa-solid fa-plus pe-2"></i> Add
                         </a>
                     </div>
@@ -766,8 +778,8 @@
                                     class="custom-badge  badge bg-success">10%</span></div>
                         </div><img src="img/product-img-2.jpg" alt="Grocery Ecommerce Template"
                             class="mb-3 img-fluid"></a>
-                        <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                class="fa-regular fa-eye i"></i>
+                        <div class="card-product-action d-flex gap-1 justify-content-center">
+                            <i class="fa-regular fa-eye i"></i>
                             <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
                             <i class="fa-solid fa-arrow-right-arrow-left i"></i>
                         </div>
@@ -789,7 +801,7 @@
                         <p class="text-dark mb-0 d-flex justify-contetn-between">
                             $11.7 <span class="text-decoration-line-through text-muted">$18</span>
                         </p>
-                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0 add-to-cart-btn">
                             <i class="fa-solid fa-plus pe-2"></i> Add
                         </a>
                     </div>
@@ -804,8 +816,8 @@
                                     class="custom-badge  badge bg-success">10%</span></div>
                         </div><img src="img/product-img-3.jpg" alt="Grocery Ecommerce Template"
                             class="mb-3 img-fluid"></a>
-                        <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                class="fa-regular fa-eye i"></i>
+                        <div class="card-product-action d-flex gap-1 justify-content-center">
+                            <i class="fa-regular fa-eye i"></i>
                             <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
                             <i class="fa-solid fa-arrow-right-arrow-left i"></i>
                         </div>
@@ -826,7 +838,7 @@
                         <p class="text-dark mb-0 d-flex justify-contetn-between">
                             $11.7 <span class="text-decoration-line-through text-muted">$18</span>
                         </p>
-                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0 add-to-cart-btn">
                             <i class="fa-solid fa-plus pe-2"></i> Add
                         </a>
                     </div>
@@ -841,8 +853,8 @@
                                     class="custom-badge  badge bg-success">10%</span></div>
                         </div><img src="img/product-img-4.jpg" alt="Grocery Ecommerce Template"
                             class="mb-3 img-fluid"></a>
-                        <div class="card-product-action d-flex gap-1 justify-content-center"> <i
-                                class="fa-regular fa-eye i"></i>
+                        <div class="card-product-action d-flex gap-1 justify-content-center">
+                            <i class="fa-regular fa-eye i"></i>
                             <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
                             <i class="fa-solid fa-arrow-right-arrow-left i"></i>
                         </div>
@@ -864,7 +876,7 @@
                         <p class="text-dark mb-0 d-flex justify-contetn-between">
                             $11.7 <span class="text-decoration-line-through text-muted">$18</span>
                         </p>
-                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0 add-to-cart-btn">
                             <i class="fa-solid fa-plus pe-2"></i> Add
                         </a>
                     </div>
@@ -908,7 +920,7 @@
                         <p class="text-dark mb-0 d-flex justify-contetn-between">
                             $11.7 <span class="text-decoration-line-through text-muted">$18</span>
                         </p>
-                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0">
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0 add-to-cart-btn">
                             <i class="fa-solid fa-plus pe-2"></i> Add
                         </a>
                     </div>
@@ -965,7 +977,7 @@
                             </p>
                         </div>
                         <div class="mt-2"> <a role="button" tabindex="0" href="#!"
-                                class="btn btn-success btn-sm m-0 w-100 py-2">
+                                class="btn btn-success btn-sm m-0 w-100 py-2 add-to-cart-btn">
                                 <i class="fa-solid fa-plus pe-2"></i> Add to cart
                             </a></div>
                         <div class="timer mt-3 d-flex justify-content-between gap-2">
@@ -988,6 +1000,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <div class="col-lg-3">
                 <div class="card">
@@ -1003,7 +1016,7 @@
                             </div>
                         </div>
                         <span class="text-muted">Tea, Coffee & Drinks</span>
-                        <p class="fw-bold">Roast Ground Coffee</p>
+                        <p class="fw-bold c">Roast Ground Coffee</p>
                         <div class="d-flex justify-content-between align-items-center ">
                             <p class="text-dark mb-0 d-flex justify-contetn-between">
                                 $11.7 <span class="text-decoration-line-through text-muted">$18</span>
@@ -1017,7 +1030,7 @@
                             </p>
                         </div>
                         <div class="mt-2"> <a role="button" tabindex="0" href="#!"
-                                class="btn btn-success btn-sm m-0 w-100 py-2">
+                                class="btn btn-success btn-sm m-0 w-100 py-2 add-to-cart-btn">
                                 <i class="fa-solid fa-plus pe-2"></i> Add to cart
                             </a></div>
                         <div class="timer mt-3 d-flex justify-content-between gap-2">
@@ -1070,7 +1083,7 @@
                             </p>
                         </div>
                         <div class="mt-2"> <a role="button" tabindex="0" href="#!"
-                                class="btn btn-success btn-sm m-0 w-100 py-2">
+                                class="btn btn-success btn-sm m-0 w-100 py-2 add-to-cart-btn">
                                 <i class="fa-solid fa-plus pe-2"></i> Add to cart
                             </a></div>
                         <div class="timer mt-3 d-flex justify-content-between gap-2">
@@ -1151,7 +1164,7 @@
         </div>
     </div>
     <!--  -->
-    <section class="mt-5 " style="background-color: #f0f3f2">
+    <section class="mt-5 px-0 mx-0   " style="background-color: #f0f3f2">
         <div class="container pt-5 ">
             <div class="row ">
                 <div class="col-lg-4 col-md-12 col-12 ">
@@ -1342,7 +1355,8 @@
                                     </a>
                                 </div>
                                 <div class=" nav-item">
-                                    <a href="#" role="button" class="nav-link text-black text-muted" tabindex="0">FAQ</a>
+                                    <a href="#" role="button" class="nav-link text-black text-muted"
+                                        tabindex="0">FAQ</a>
                                 </div>
                                 <div class=" nav-item">
                                     <a href="#" role="button" class="nav-link text-black text-muted" tabindex="0">New
@@ -1451,6 +1465,25 @@
             Book Now</button>
 
     </div>
+
+
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center cart-item">
+            <img src="img/category-atta-rice-dal.jpg" alt="${item.name}" class="cart-item-image"
+                style="width: 100px; object-fit: cover; margin-right: 10px;">
+            <div class="d-flex flex-column">
+                <p>lorem</p>
+                <p class="price text-center" data-price="${item.price}">$${item.price.toFixed(2)}</p>
+                <div class="text-center ">
+                    <button class="btn btn-sm btn-outline-secondary decrease-quantity" data-index="${index}">-</button>
+                    <span class="quantity pe-2">${item.quantity}</span>
+                    <button class="btn btn-sm btn-outline-secondary increase-quantity" data-index="${index}">+</button>
+                </div>
+            </div>
+            <button class="btn btn-sm btn-danger remove-item" data-index="${index}">Remove</button>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
     <script src="js/slick-slider.js"></script>
     <script src="js/route.js"></script>
@@ -1462,6 +1495,10 @@
         }
     </script> -->
 
+    <!-- ... existing code ... -->
+    <script>
+
+    </script>
 
 
 </body>

@@ -5,19 +5,20 @@ body {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    background:url(shopping2.jpg);
+    background: url(shopping2.jpg);
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
 
 }
-  /* Glassmorphism effect */
-  .glassmorphism {
-    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-    border-radius: 15px; /* Rounded corners */
-    backdrop-filter: blur(15px); /* Blur effect */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+
+/* Glassmorphism effect */
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .freshcart-loader {
@@ -58,34 +59,12 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
-/* 
-@keyframes cart-bounce {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-} */
 
 .form {
     border: none;
 }
 
-/* @media (max-width: 768px) {
 
-    #loginform,
-    #signupform,
-    #forgotPasswordform,
-    #resetPasswordform {
-        background: #f2994a;
-        background: -webkit-linear-gradient(to right, #f2c94c, #f2994a);
-        background: linear-gradient(to right, #f2c94c, #f2994a);
-    }
-} */
 
 .error-message {
     color: red;

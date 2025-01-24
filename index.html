@@ -21,10 +21,12 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Fresh Cart</title>
-
+    <link rel="preload" as="image" href="img/slide-1.jpg">
+    <link rel="preload" as="image" href="img/slide-2.jpg">
+    <link rel="preload" as="image" href="img/slide-3.jpg">
 </head>
 
-<body class="px-2">
+<body>
 
     <!-- //site Loader -->
     <div class="freshcart-loader m-0 p-0">
@@ -385,15 +387,14 @@
                         class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
                         aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+
                 </div>
                 <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <!-- First Slide -->
                         <div class="carousel-item active">
                             <div class="position-relative w-100 ">
-                                <img src="img/slide-1.jpg" class="d-block w-100 rounded" alt="...">
+                                <img src="img/slide-1.jpg" class="d-block w-100 rounded" alt="..." loading="lazy">
                                 <div class="position-absolute top-50 start-0 translate-middle-y text-black p-4 w-100">
                                     <h1 class=" fw-bold "> Fresh Grocery</h1>
                                     <p class="lead">Save big on your favorite products.</p>
@@ -404,7 +405,7 @@
                         <!-- Second Slide -->
                         <div class="carousel-item">
                             <div class="position-relative">
-                                <img src="img/slide-2.jpg" class="d-block w-100 rounded" alt="...">
+                                <img src="img/slide-2.jpg" class="d-block w-100 rounded" alt="..." loading="lazy">
                                 <div class="position-absolute top-50 start-0 translate-middle-y text-black p-4">
                                     <h1 class=" fw-bold">Fresh & Organic</h1>
                                     <p class="lead">Save big on your favorite products.</p>
@@ -412,17 +413,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Third Slide -->
-                        <div class="carousel-item">
-                            <div class="position-relative">
-                                <img src="img/grocery-banner.png" class="d-block w-100 rounded" alt="...">
-                                <div class="position-absolute top-50 start-0 translate-middle-y text-black p-4">
-                                    <h1 class=" fw-bold">Exclusive Discounts</h1>
-                                    <p class="lead">Save big on your favorite products.</p>
-                                    <a href="#!" class="btn btn-warning">Shop Deals</a>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
 
                 </div>
@@ -737,7 +728,7 @@
                             <div class="d-flex gap-1 flex-column"><span
                                     class="custom-badge  badge bg-danger">Sale</span><span
                                     class="custom-badge  badge bg-success">10%</span></div>
-                        </div><img src="img/product-img-1.jpg" alt="Grocery Ecommerce Template"
+                        </div><img src="img/product-img-6.jpg" alt="Grocery Ecommerce Template"
                             class="mb-3 img-fluid"></a>
                         <div class="card-product-action d-flex gap-1 justify-content-center">
                             <i class="fa-regular fa-eye i"></i>
@@ -745,10 +736,10 @@
                             <i class="fa-solid fa-arrow-right-arrow-left i"></i>
                         </div>
                     </div>
-                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Snack
-                                &amp; Munchies</small></a></div>
-                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Haldiram's Sev
-                            Bhujia</a>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Dairy,
+                                Bread &amp; Eggs</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Blueberry Greek
+                            Yogurt</a>
                     </h2>
                     <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
                             <div class="d-flex gap-1">
@@ -777,7 +768,7 @@
                             <div class="d-flex gap-1 flex-column"><span
                                     class="custom-badge  badge bg-danger">Sale</span><span
                                     class="custom-badge  badge bg-success">10%</span></div>
-                        </div><img src="img/product-img-2.jpg" alt="Grocery Ecommerce Template"
+                        </div><img src="img/product-img-10.jpg" alt="Grocery Ecommerce Template"
                             class="mb-3 img-fluid"></a>
                         <div class="card-product-action d-flex gap-1 justify-content-center">
                             <i class="fa-regular fa-eye i"></i>
@@ -785,10 +776,10 @@
                             <i class="fa-solid fa-arrow-right-arrow-left i"></i>
                         </div>
                     </div>
-                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Bakery
-                                &amp; Biscuits</small></a></div>
-                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">NutriChoice
-                            Digestive</a>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Snack &amp;
+                                Munchies</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Slurrp Millet
+                            Chocolate</a>
                     </h2>
                     <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
                             <div class="d-flex gap-1"> <i class="fa-solid fa-star"></i>
@@ -800,7 +791,7 @@
                         </small><span class="text-muted small">4.3 (4)</span></div>
                     <div class="d-flex justify-content-between align-items-center mt-3 gap-3">
                         <p class="text-dark mb-0 d-flex justify-contetn-between">
-                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                            $75.2 <span class="text-decoration-line-through text-muted">$70.2</span>
                         </p>
                         <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0 add-to-cart-btn">
                             <i class="fa-solid fa-plus pe-2"></i> Add
@@ -899,13 +890,206 @@
                             <i class="fa-solid fa-arrow-right-arrow-left i"></i>
                         </div>
                     </div>
-                    <div>
-                        <button class="btn btn-sm btn-outline-secondary decrease-quantity"
-                            data-index="${index}">-</button>
-                        <span class="quantity">1</span> <!-- Set initial quantity to 1 -->
-                        <button class="btn btn-sm btn-outline-secondary increase-quantity"
-                            data-index="${index}">+</button>
+
+                    <div class="text-small mb-1">
+                        <a class="text-decoration-none text-muted" href="#!"><small>Instant Food</small></a>
                     </div>
+                    <h2 class="fs-6 cardheading">
+                        <a class="text-inherit text-decoration-none" href="">Salted Popcorn</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center">
+                        <small class="text-warning">
+                            <div class="d-flex gap-1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small>
+                        <span class="text-muted small">4.3 (4)</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-3">
+                        <p class="text-dark mb-0 d-flex justify-contetn-between">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0 add-to-cart-btn">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card  ">
+                <div class="card-body pt-3 pb-3  pe-0 ps-0  ">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0 ">
+                            <div class="d-flex gap-1 flex-column"><span
+                                    class="custom-badge  badge bg-danger">Sale</span><span
+                                    class="custom-badge  badge bg-success">10%</span></div>
+                        </div><img src="img/product-cheese-7.jpg" alt="Grocery Ecommerce Template"
+                            class="mb-3 img-fluid"></a>
+                        <div class="card-product-action d-flex gap-1 justify-content-center">
+                            <i class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Dairy,
+                                Bread &amp; Eggs</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Blueberry Greek
+                            Yogurt</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
+                            <div class="d-flex gap-1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small><span class="text-muted small">4.3 (4)</span></div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-3">
+                        <p class="text-dark mb-0 d-flex justify-contetn-between">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0 add-to-cart-btn">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+
+                <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0 ">
+                            <div class="d-flex gap-1 flex-column"><span
+                                    class="custom-badge  badge bg-danger">Sale</span><span
+                                    class="custom-badge  badge bg-success">10%</span></div>
+                        </div><img src="img/product-cheese-7.jpg" alt="Grocery Ecommerce Template"
+                            class="mb-3 img-fluid"></a>
+                        <div class="card-product-action d-flex gap-1 justify-content-center">
+                            <i class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Snack &amp;
+                                Munchies</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Slurrp Millet
+                            Chocolate</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
+                            <div class="d-flex gap-1"> <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small><span class="text-muted small">4.3 (4)</span></div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-3">
+                        <p class="text-dark mb-0 d-flex justify-contetn-between">
+                            $75.2 <span class="text-decoration-line-through text-muted">$70.2</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0 add-to-cart-btn">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0 ">
+                            <div class="d-flex gap-1 flex-column"><span
+                                    class="custom-badge  badge bg-danger">Sale</span><span
+                                    class="custom-badge  badge bg-success">10%</span></div>
+                        </div><img src="img/product-img-5.jpg" alt="Grocery Ecommerce Template"
+                            class="mb-3 img-fluid"></a>
+                        <div class="card-product-action d-flex gap-1 justify-content-center"> <i
+                                class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Bakery
+                                &amp; Biscuits</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Cadbury 5 Star</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
+                            <div class="d-flex gap-1"> <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small><span class="text-muted small">4.3 (4)</span></div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-3">
+                        <p class="text-dark mb-0 d-flex justify-contetn-between">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0 add-to-cart-btn">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body pt-3 pb-3 pe-0 ps-0 ">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0 ">
+                            <div class="d-flex gap-1 flex-column"><span
+                                    class="custom-badge  badge bg-danger">Sale</span><span
+                                    class="custom-badge  badge bg-success">10%</span></div>
+                        </div><img src="img/product-img-4.jpg" alt="Grocery Ecommerce Template"
+                            class="mb-3 img-fluid"></a>
+                        <div class="card-product-action d-flex gap-1 justify-content-center"> <i
+                                class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+                    <div class="text-small mb-1"><a class="text-decoration-none text-muted" href="#!"><small>Snack
+                                &amp; Munchies</small></a></div>
+                    <h2 class="fs-6 cardheading"><a class="text-inherit text-decoration-none" href="">Onion Flavour
+                            Potato</a>
+                    </h2>
+                    <div class="d-inline-flex gap-1 align-items-center "><small class="text-warning">
+                            <div class="d-flex gap-1"> <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </small><span class="text-muted small">4.3 (4)</span></div>
+                    <div class="d-flex justify-content-between align-items-center mt-3 gap-3">
+                        <p class="text-dark mb-0 d-flex justify-contetn-between">
+                            $11.7 <span class="text-decoration-line-through text-muted">$18</span>
+                        </p>
+                        <a role="button" tabindex="0" href="#!" class="btn btn-success btn-sm m-0 add-to-cart-btn">
+                            <i class="fa-solid fa-plus pe-2"></i> Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body pt-3 pb-3 pe-0 ps-0">
+                    <div class="text-center position-relative">
+                        <div class="position-absolute top-0 start-0">
+                            <div class="d-flex gap-1 flex-column">
+                                <span class="custom-badge badge bg-danger">Sale</span>
+                                <span class="custom-badge badge bg-success">10%</span>
+                            </div>
+                        </div>
+                        <img src="img/product-img-5.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid">
+                        <div class="card-product-action d-flex gap-1 justify-content-center">
+                            <i class="fa-regular fa-eye i"></i>
+                            <i class="fa-regular fa-heart i" id="cardHeartIcon" style="cursor: pointer;"></i>
+                            <i class="fa-solid fa-arrow-right-arrow-left i"></i>
+                        </div>
+                    </div>
+
                     <div class="text-small mb-1">
                         <a class="text-decoration-none text-muted" href="#!"><small>Instant Food</small></a>
                     </div>
@@ -1363,7 +1547,8 @@
                                     </a>
                                 </div>
                                 <div class=" nav-item">
-                                    <a href="#" role="button" class="nav-link text-black text-muted" tabindex="0">FAQ</a>
+                                    <a href="#" role="button" class="nav-link text-black text-muted"
+                                        tabindex="0">FAQ</a>
                                 </div>
                                 <div class=" nav-item">
                                     <a href="#" role="button" class="nav-link text-black text-muted" tabindex="0">New
